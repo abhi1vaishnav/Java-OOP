@@ -1,0 +1,27 @@
+/* Programmer Name: Abhi Vaishnav
+ * Date: April 27, 2020
+ * Purpose: To display the square and cube values for the first 20 numbers*/
+
+//import java math class to calculate the power
+import java.lang.Math;
+
+class Main {
+
+public static void main(String[] args) {
+
+    //declare variable for the number
+		int num = 1;
+
+    //print the outline of what will be outputted outside the loop
+    System.out.println("Number\t\tSquare\t\tCube");
+
+    //create a do while loop to display a number and its square and cube values
+		do
+		{
+      //print the number and the correct powers
+      System.out.println(num + "\t\t    " + num*num + "\t\t    " + num*num*num);
+      num++;
+		}while (num <=20);
+	}
+
+}
