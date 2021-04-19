@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //variables
+    String choice;
+    int length, width, height;
+
+    //get the user's choice
+    System.out.print("\nWould you like to create a line, rectangle or box: ");
+    choice = input.next();
+
+    //if statements whether the user chooses a line, rectangle or box
+    if (choice.equalsIgnoreCase("Line")){
+      
+      //get the length of the line
+      System.out.print("\nEnter the length: ");
+      length = input.nextInt();
+      //create an object for the line
+      Box b1 = new Box(length);
+      //print the message for the line
+      System.out.println("\nLine created with a length of " + b1.getLength());
+    }
+
+    //get the width and length of the rectangle
+    else if (choice.equalsIgnoreCase("Rectangle")){
+      System.out.print("\nEnter the length: ");
+      length = input.nextInt();
+
+      System.out.print("\nEnter the width: ");
+      width = input.nextInt();
+      //create a box object
+      Box b2 = new Box(length, width);
+      //output the message for a rectangle
+      System.out.println("\nRectangle created with a length of " + b2.getLength() + " and width of " + b2.getWidth());
+    }
+
+    //get the width, length and height for a box
+    else {
+      System.out.print("\nEnter the length: ");
+      length = input.nextInt();
+
+      System.out.print("\nEnter the width: ");
+      width = input.nextInt();
+
+      System.out.print("\nEnter the height: ");
+      height = input.nextInt();
+
+      //create a box object with 3 perameters
+      Box b3 = new Box(length, width, height);
+
+      System.out.println("\nBox created with a length of " + b3.getLength() + ", width of " + b3.getWidth() + " and height of " + b3.getHeight());
+    }
+
+  }
+}
+
+
+public class Box {
+
+  //member variables
+  int length, width, height;
+
+  //overloaded constructor methods for box/line/rectangle
+  public Box(){
+    length = 0;
+    width = 0;
+    height = 0;
+  }
+
+  public Box(int l){
+    length = l;
+    width = 0;
+    height = 0;
+  }
+
+  public Box(int l, int w){
+    length = l;
+    width = w;
+    height = 0;
+  }
+
+  public Box(int l, int w, int h){
+    length = l;
+    width = w;
+    height = h;
+  }
+
+  //mutator methods
+  public void setLength(int l){
+    length = l;
+  }
+
+  public void setWidth(int w){
+    width = w;
+  }
+
+  public void setHeight(int h){
+    height = h;
+  }
+
+  //accessor methods
+  public int getLength(){
+    return length;
+  }
+
+  public int getWidth(){
+    return width;
+  }
+
+  public int getHeight(){
+    return height;
+  }
+
+}
