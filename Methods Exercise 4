@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+
+    //get the price of the furniture item
+    System.out.println("Enter the price of the furniture item: ");
+    double price = input.nextDouble();
+
+    //get the discount
+    System.out.println("Enter the discount (%): ");
+    double discount = input.nextInt();
+
+    //get the tax
+    System.out.println("Enter the tax (%): ");
+    double tax = input.nextDouble();
+
+    //call the method to display the price
+    furniture(price,discount,tax);
+
+  }
+
+  //method calculates the final price of the item
+  public static void furniture (double item, double rate, double hst){
+    rate = rate/100;
+    hst = hst/100;
+    
+    System.out.println("The total price of the item is $" + item*(1-rate)*(1+hst));
+  }
+
+}
