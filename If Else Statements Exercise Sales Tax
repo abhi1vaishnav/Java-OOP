@@ -1,0 +1,98 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 6, 2020
+*Purpose: To display the price of an item with the sales *tax depending on the province*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare variables and constants for some
+    final String province;
+    final double price;
+    double tax, total;
+
+    //prompt the user to enter the province
+    System.out.println("Enter the province: ");
+    //get the province of the user
+    province = input.next();
+
+    //prompt the user to enter the price of the item
+    System.out.println("Enter the price of the item: ");
+    price = input.nextDouble();
+
+    //create an if statement with the different provinces being the subcategories
+    if (province.equals("ON")){
+      //tax in Ontario is 13%
+      System.out.println("Province: Ontario");
+      System.out.println("Sales tax in Ontario is 13%");
+      System.out.println("Price of the item: $" + price);
+      //calculate the tax
+      tax = 0.13*price;
+      //round the tax to 2 decimal places
+      tax = tax*100;
+      tax = Math.round(tax);
+      tax = tax/100;
+      System.out.println("Sales tax: $" + tax);
+      //the total amount is tax+price
+      total = tax + price;
+      System.out.println("Total with taxes: $" + total);
+    }
+    else if (province.equals("QC")){
+      //tax in Quebec is 10%
+      System.out.println("Province: Quebec");
+      System.out.println("Sales tax in Quebec is 10%");
+      System.out.println("Price of the item: $" + price);
+      //calculate the tax
+      tax = 0.1*price;
+      //round the tax to 2 decimal places
+      tax = tax*100;
+      tax = Math.round(tax);
+      tax = tax/100;
+      System.out.println("Sales tax: $" + tax);
+      //the total amount is tax+price
+      total = tax + price;
+      System.out.println("Total with taxes: $" + total);
+    }
+    else if (province.equals("BC")){
+      //tax in British Columbia is 12%
+      System.out.println("Province: British Columbia");
+      System.out.println("Sales tax in British Columbia is 12%");
+      System.out.println("Price of the item: $" + price);
+      //calculate the tax
+      tax = 0.12*price;
+      //round the tax to 2 decimal places
+      tax = tax*100;
+      tax = Math.round(tax);
+      tax = tax/100;
+      System.out.println("Sales tax: $" + tax);
+      //the total amount is tax+price
+      total = tax + price;
+      System.out.println("Total with taxes: $" + total);
+    }
+    else if (province.equals("AB")){
+      //tax in Alberta is 7%
+      System.out.println("Province: Alberta");
+      System.out.println("Sales tax in ALberta is 7%");
+      System.out.println("Price of the item: $" + price);
+      //calculate the tax
+      tax = 0.07*price;
+      //round the tax to 2 decimal places
+      tax = tax*100;
+      tax = Math.round(tax);
+      tax = tax/100;
+      System.out.println("Sales tax: $" + tax);
+      //the total amount is tax+price
+      total = tax + price;
+      System.out.println("Total with taxes: $" + total);
+    }
+    else{
+      //display invalid response if none of the codes are entered
+      System.out.println("Invalid province code");
+    }
+  }
+}
