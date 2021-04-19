@@ -1,0 +1,16 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To display the numbers from 1 to 20 using a for loop*/
+
+
+class Main {
+  public static void main(String[] args) {
+   
+   //create a for loop to display all the numbers from 1 to 20
+   for (int x=1; x<=20; x++){
+     //print the number for every iteration
+     System.out.println(x);
+   }
+
+  }
+}
