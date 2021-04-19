@@ -1,0 +1,53 @@
+/*Programmer's Name: Abhi Vaishnav
+Date Last Modified: April 27, 2020
+Purpose: To display the teaching and non-teaching staff using a while loop*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    String teaching = "", nteaching = "", name;
+    char staff, decision = 'Y';
+    int teaching_count = 0, nteaching_count = 0;
+
+    //create a while loop to allow the user to repeat the steps multiple times
+    while (decision != 'N'){
+      
+      //prompt the user to enter their name
+      System.out.println("Enter your name: ");
+      //get the name from the user
+      name = input.next();
+
+      //prompt the user to enter if they teach or not
+      System.out.println("Are you a teaching staff member or a non-teaching staff member? (T/N)");
+      //get the status of the teacher
+      staff = input.next().charAt(0);
+
+      if (staff == 'T'){
+      //Concatenating the two Strings
+        teaching = teaching + "\n" + name;
+        teaching_count++;
+      }
+      else if (staff == 'N'){
+        nteaching = nteaching + "\n" + name;
+        nteaching_count++;
+      }
+      //ask the user if they would like to continue
+      System.out.println("Would you like to enter another person? (Y/N)");
+      decision = input.next().charAt(0);
+
+    }
+
+    //display the staff and number of staff who are teaching
+    System.out.println("\nTeaching staff" + teaching + "\nTotal: " + teaching_count);
+    //display the staff and number of staff who are not teaching
+    System.out.println("\nNon-Teaching staff" + nteaching + "\nTotal: " + nteaching_count);
+
+  }
+}
