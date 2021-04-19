@@ -1,0 +1,48 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 14, 2020
+*Purpose: To display the shipping charge based on the province code*/
+
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variable for the province code
+    char prov;
+
+    //prompt the user to enter the province code
+    System.out.println("Enter the province code: ");
+    prov = input.next().charAt(0);
+
+    //create a switch statement to display the shipping price based on the province entered by the user
+    switch(prov){
+      case 'B':
+        System.out.println("Province Code: B");
+        System.out.println("Province Name: British Columbia");
+        System.out.println("Shipping Price: $25.00");
+        break;
+      case 'O':
+        System.out.println("Province Code: O");
+        System.out.println("Province Name: Ontario");
+        System.out.println("Shipping Price: $30.00");
+        break;
+      case 'A':
+        System.out.println("Province Code: A");
+        System.out.println("Province Name: Alberta");
+        System.out.println("Shipping Price: $32.50");
+        break;
+      case 'Q':
+        System.out.println("Province Code: Q");
+        System.out.println("Province Name: Quebec");
+        System.out.println("Shipping Price: $45.00");
+        break;
+      default:
+        //display an appropriate message if the user enters something else
+        System.out.println("No shipping available");
+    }
+  }
+}
