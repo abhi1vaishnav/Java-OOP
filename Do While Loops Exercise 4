@@ -1,0 +1,52 @@
+/*Programmer's Name: Abhi Vaishnav
+Date: April 27, 2020
+Purpose: To display the name and mark of students and calculate the class average*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    int counter = 1, mark = 0, sum = 0;
+    double average = 0;
+    String name;
+
+    //create a do while loop to get the mark of 10 students
+    do{
+    
+      //prompt the user to enter their name
+      System.out.println("\nEnter student #" + counter + "'s name: ");
+      //get the user's name
+      name = input.next();
+
+      //prompt the user to enter their mark
+      System.out.println("Enter student #" + counter + "'s mark: ");
+      //get the user's mark
+      mark = input.nextInt();
+
+      //print the student's name and their mark in a paricular format
+      System.out.println("\nStudent #" + counter + "\n" + name + " " + mark + "%");
+
+
+      //add the student's mark to the sum to then calculate the average
+      sum += mark;
+      counter++;
+
+    }while (counter <= 10);
+
+    //calculate the average
+    average = sum/10;
+    //round the average to the nearest integer
+    average = average*10;
+    average = Math.round(average);
+    average = average/10;
+    //print the average
+    System.out.println("\nClass Average: " + average + "%");
+
+  }
+}
