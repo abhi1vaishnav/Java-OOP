@@ -1,0 +1,36 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 6, 2020
+*Purpose: To display a message to the user if they are admitted into university based on the mark they input*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    int average;
+
+    //prompt the user to enter their average
+    System.out.println("Enter your mark: ");
+    average = input.nextInt();
+
+    //create an if statement whether the user has been admitted
+    if (average >= 90){
+      //if their average is higher then 90% they have been admitted
+      System.out.println("You have been given admission to the program");
+    }
+    else if (average >=80){
+      //students with an average higher than 80% has been granted an interview
+      System.out.println("You have been granted an interview");
+    }
+    else{
+      //a student with an average below 80% has not been accepted
+      System.out.println("You have not been granted an interview or admission");
+    }
+
+  }
+}
