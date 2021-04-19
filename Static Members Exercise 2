@@ -1,0 +1,124 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input =  new Scanner (System.in);
+
+    //create 4 objects
+    Room r1 = new Room();
+    Room r2 = new Room();
+    Room r3 = new Room("Monday",10,19);
+    Room r4 = new Room("Thursday",16,20);
+
+    //get the info for the first two meetings
+    System.out.print("\nEnter the day of the first meeting: ");
+    r1.setDay(input.next());
+
+    System.out.print("\nEnter the start time (use the 24 hour clock and only enter the hour): ");
+    r1.setStart(input.nextInt());
+
+    System.out.print("\nEnter the end time (use the 24 hour clock and only enter the hour): ");
+    r1.setEnd(input.nextInt());
+
+    System.out.print("\nEnter the day of the second meeting: ");
+    r2.setDay(input.next());
+
+    System.out.print("\nEnter the start time (use the 24 hour clock and only enter the hour): ");
+    r2.setStart(input.nextInt());
+
+    System.out.print("\nEnter the end time (use the 24 hour clock and only enter the hour): ");
+    r2.setEnd(input.nextInt());
+
+    //display the rate at the top
+    System.out.println();
+    Room.displayRate();
+
+    //display the meeting data
+    System.out.println("\n\nMeeting #1\nDay: " + r1.getDay() + "\nStart time: " + r1.getStart() + ":00\nEnd time: " + r1.getEnd() + ":00\nTotal Amount Owed: " + r1.calculateRate());
+
+    System.out.println("\n\nMeeting #2\nDay: " + r2.getDay() + "\nStart time: " + r2.getStart() + ":00\nEnd time: " + r2.getEnd() + ":00\nTotal Amount Owed: " + r2.calculateRate());
+
+    System.out.println("\n\nMeeting #3\nDay: " + r3.getDay() + "\nStart time: " + r3.getStart() + ":00\nEnd time: " + r3.getEnd() + ":00\nTotal Amount Owed: " + r3.calculateRate());
+
+    System.out.println("\n\nMeeting #4\nDay: " + r4.getDay() + "\nStart time: " + r4.getStart() + ":00\nEnd time: " + r4.getEnd() + ":00\nTotal Amount Owed: " + r4.calculateRate());
+
+  }
+}
+
+
+import java.text.NumberFormat;
+
+public class Room{
+  
+  NumberFormat money = NumberFormat.getCurrencyInstance();
+  
+  //member variables
+  String day;
+  int start, end;
+
+  //constructor and overloaded constructor
+  public Room(){
+    day = "";
+    start = 0;
+    end = 0;
+  }
+
+  public Room(String d, int s, int e){
+    day = d;
+    start = s;
+    end = e;
+  }
+
+  //mutator methods
+  public void setDay(String d){
+    day = d;
+  }
+
+  public void setStart(int s){
+    start = s;
+  }
+
+  public void setEnd(int e){
+    end = e;
+  }
+
+  //accessor methods
+  public String getDay(){
+    return day;
+  }
+
+  public int getStart(){
+    return start;
+  }
+
+  public int getEnd(){
+    return end;
+  }
+
+  //static method to display the rate
+  public static void displayRate(){
+    System.out.println("\t\tDay\t\tAmount");
+    System.out.println("\t\tMonday\t\t$30\n\t\tTuesday\t\t$35\n\t\tWednesday\t$25\n\t\tThursday\t$20\n\t\tFriday\t\t$20");
+  }
+
+  //method calculates and returns the total
+  public String calculateRate(){ 
+    //based on the day, return the total
+    if (day.equalsIgnoreCase("Monday")){
+      //convert the amount into a string using number formatting
+      return money.format((end-start)*30);
+    }  
+    else if (day.equalsIgnoreCase("Tuesday")){
+      return money.format((end-start)*35);
+    }
+    else if (day.equalsIgnoreCase("Wednesday")){
+      return money.format((end-start)*25);
+    }
+    else if (day.equalsIgnoreCase("Thursday")){
+      return money.format((end-start)*20);
+    }
+    else {
+      return money.format((end-start)*20);
+    }
+  }
+}
