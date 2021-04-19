@@ -1,0 +1,14 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    int numberOfEggs = 50;
+    //output the number of dozens and odd eggs
+    eggs(numberOfEggs);
+  }
+  public static void eggs (int num){
+    int dozens = num/12;
+    dozens = Math.round(dozens);
+    System.out.println("\nThe number of dozens in 50 eggs is " + dozens + ". \nThe number of eggs remaining is " + num%12);
+  }
+}
