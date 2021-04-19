@@ -1,0 +1,41 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To determine and display a message to the appropriate user if any of the 8 are an adult student*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables for storing the age and name
+    String name = "";
+    int age = 0;
+
+    //create a for loop to get the names and ages of 8 students
+    for (int i = 0; i < 8; i++){
+
+      //prompt the user to enter their name
+      System.out.println("Enter your name: ");
+      //get the name of the student
+      name = input.next();
+
+      //prompt the user to enter their age
+      System.out.println("Enter your age: ");
+      age = input.nextInt();
+
+      //create an if statement depending on if the user if older than 18
+      if (age > 18){
+        System.out.println(name + " you are an adult student!\n");
+      }
+      else{
+        System.out.println("");
+      }
+
+    }
+
+  }
+}
