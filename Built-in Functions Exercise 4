@@ -1,0 +1,71 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 3, 2020
+*Purpose: To order the names of friends in alphabetical order*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare variables
+    String friend, friend2, friend3;
+    int compare12, compare23, compare13;
+
+    //prompt the user to enter the names of the three friends
+    System.out.println("Enter the names of three friends: ");
+    friend = input.next();
+    friend2 = input.next();
+    friend3 = input.next();
+
+    //use the compare function to determine which friend places where alphabetically
+    compare12 = friend.compareTo(friend2);
+    compare23 = friend2.compareTo(friend3);
+    compare13 = friend.compareTo(friend3);
+
+    //create a if statement to display the names in alphabetical order
+    if (compare12 < 0 && compare23 < 0){
+      System.out.println(friend + "\t" + friend2 + "\t" + friend3);
+    }
+    else if (compare13 < 0 && compare23 > 0){
+      System.out.println(friend + "\t" + friend3 + "\t" + friend2);
+    }
+    else if (compare12 > 0 && compare13 < 0){
+      System.out.println(friend2 + "\t" + friend + "\t" + friend3);
+    }
+    else if (compare23 < 0 && compare12 > 0){
+      System.out.println(friend2 + "\t" + friend3 + "\t" + friend);
+    }
+    else if (compare13 > 0 && compare12 < 0){
+      System.out.println(friend3 + "\t" + friend + "\t" + friend2);
+    }
+    else if (compare23 > 0 && compare12 > 0){
+      System.out.println(friend3 + "\t" + friend2 + "\t" + friend);
+    }
+    else if (compare12 == 0 && compare13 == 0){
+      System.out.println(friend + "\t" + friend2 + "\t" + friend3);
+    }
+    else if (compare12 == 0 && compare23 < 0){
+      System.out.println(friend + "\t" + friend2 + "\t" + friend3);
+    }
+    else if (compare12 == 0 && compare23 > 0){
+      System.out.println(friend3 + "\t" + friend + "\t" + friend2);
+    }
+    else if (compare13 == 0 && compare23 > 0){
+      System.out.println(friend + "\t" + friend3 + "\t" + friend2);
+    }
+    else if (compare13 == 0 && compare23 < 0){
+      System.out.println(friend2 + "\t" + friend + "\t" + friend3);
+    }
+    else if (compare23 == 0 && compare13 > 0){
+      System.out.println(friend2 + "\t" + friend3 + "\t" + friend);
+    }
+    else if (compare23 == 0 && compare13 < 0){
+      System.out.println(friend + "\t" + friend2 + "\t" + friend3);
+    }
+
+  }
+}
