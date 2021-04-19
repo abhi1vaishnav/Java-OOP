@@ -1,0 +1,47 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 21, 2020
+*Purpose: To display the prices of 10 items and the average price*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    double sprice = 0, average = 0, price = 0;
+    //declare and initialize a counter for the while loop
+    int counter = 0;
+
+    //create a while loop to get the prices of 10 items
+    while (counter < 10){
+
+      //prompt the user to enter the price
+      System.out.println("\nEnter the price: ");
+      //get the price from the user
+      price = input.nextDouble();
+
+      //print the price of the item to the user
+      System.out.println("The price of the item you entered is: $" + price);
+
+      //add the price of the item to the sum of all the price
+      sprice += price;
+      counter ++;
+    }
+
+    //calculate the average which is the sum divided by the number of prices entered
+    average = sprice/10;
+
+    //round the average
+    average = average*100;
+    average = Math.round(average);
+    average = average/100;
+
+    //dislay the average to the user
+    System.out.println("\nThe average price of the items is $" + average);
+  
+  }
+}
