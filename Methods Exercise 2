@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+
+    //get the user's first and last names
+    System.out.println("Enter your first name: ");
+    String first = input.next();
+    
+    System.out.println("Enter your last name: ");
+    String last = input.next();
+
+    //call the method name and pass the required perameters
+    name(first, last);
+  }
+
+  //create a method to display the initials
+  public static void name (String f, String l){
+    System.out.println("The initials of " + f + " " + l + " are " + f.substring(0,1) + "." + l.substring(0,1) + ".");
+  }
+
+}
