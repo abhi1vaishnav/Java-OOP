@@ -1,3 +1,68 @@
+---- MAIN CLASS ----
+
+
+//Name: Abhi
+//Date: October 21, 2020
+//Assignment: OOP Exercises
+
+import java.util.Scanner;
+class Main {
+  public static void main (String [] args){
+    
+    Scanner input = new Scanner (System.in);
+    
+    //create 3 pizza objects
+    Pizza p1 = new Pizza();
+    Pizza p2 = new Pizza();
+    Pizza p3 = new Pizza();
+
+    //get the topping and size of the pizzas by user input
+    System.out.println("Enter the topping for the first pizza: ");
+    p1.setToppings(input.next());
+
+    System.out.println("Enter the diameter of the first pizza (10,12,14): ");
+    int diameter1 = input.nextInt();
+    p1.setDiameter(diameter1);
+
+    //pass the diameter to set the pizza price
+    p1.setPrice(diameter1);
+
+    System.out.println("Enter the topping for the second pizza: ");
+    p2.setToppings(input.next());
+
+    System.out.println("Enter the diameter of the second pizza (10,12,14): ");
+    int diameter2 = input.nextInt();
+    p2.setDiameter(diameter2);
+
+    //pass the diameter to .setprice
+    p2.setPrice(diameter2);
+
+    System.out.println("Enter the topping for the third pizza: ");
+    p3.setToppings(input.next());
+
+    System.out.println("Enter the diameter of the third pizza (10,12,14): ");
+    int diameter3 = input.nextInt();
+    p3.setDiameter(diameter3);
+
+    p3.setPrice(diameter3);
+
+    //output the info for the first pizza
+    System.out.println("Pizza #1\n" + "Topping: " + p1.getToppings() + "\nDiameter: " + p1.getDiameter() + "\"\nPrice: $" + p1.getPrice());
+
+    //output the info for the second pizza
+    System.out.println("\nPizza #2" + "\nTopping: " + p2.getToppings() + "\nDiameter: " + p2.getDiameter() + "\"\nPrice: $" + p2.getPrice());
+
+    //output the info for the third pizza
+    System.out.println("\nPizza #3" + "\nTopping: " + p3.getToppings() + "\nDiameter: " + p3.getDiameter() + "\"\nPrice: $" + p3.getPrice());
+
+  }
+}
+
+
+---- PIZZA CLASS ----
+
+
+
 //Name: Abhi
 //Date: October 21, 2020
 //Assignment: OOP Exercises
