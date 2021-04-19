@@ -1,0 +1,23 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To display the numbers from 1 to 100 that are divisible by 2*/
+
+class Main {
+  public static void main(String[] args) {
+    
+    //declare variables
+    int counter = 1;
+    
+    //use a while loop to display all even numbers until 100
+    while (counter <= 100){
+        //if the counter is divisible by 2 then display it, otherwise skip the value without displayng it
+        if (counter%2==0){
+          System.out.println(counter);
+        }
+        else{
+        }
+        counter++;
+    }
+
+  }
+}
