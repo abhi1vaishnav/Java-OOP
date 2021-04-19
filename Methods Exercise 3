@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+
+    //get the base
+    System.out.println("Enter the base: ");
+    int base = input.nextInt();
+
+    System.out.println("Enter the power: ");
+    int power = input.nextInt();
+
+    //call the method
+    power(base,power);
+  }
+  
+  //create a method to calculate the product
+  public static void power (int b, int p){
+    System.out.println("The result is " + Math.pow(b,p));
+  }
+
+}
