@@ -1,0 +1,42 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date: April 27, 2020
+*Purpose: To get the name and sales of the salesperson*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    String name = "", study = "";
+    int sale = 0, counter = 0;
+
+    //create a do while loop to get the names and sales an unspecified amount of times
+    do{
+      counter++;
+      //prompt the user to enter their name
+      System.out.println("Enter salesman #" + counter +  "'s name: ");
+      //get the salesperson's name
+      name = input.next();
+
+      //prompt the user to enter the sales
+      System.out.print("Enter the sales amount: $");
+      //get the sales from the user
+      sale = input.nextInt();
+
+      //congratulate the user if they made a big earnings
+      if (sale >= 2000){
+        System.out.println("Congratulations, you sold more than $2000! You are a great salesman!");
+      }
+      //ask the user if they want to continue
+      System.out.println("Would you like to continue? (Y/N)");
+      //get the decision from the user
+      study = input.next();
+    }while(study.equalsIgnoreCase("Y"));
+
+  }
+}
