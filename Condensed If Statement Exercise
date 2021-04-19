@@ -1,0 +1,17 @@
+class Main {
+
+	public static void main(String[] args) {
+		double x = 2, y = 3; 
+		String slope;
+		
+		slope = (x != 0)? Double.toString(y/x) : "Undefined";  
+		
+		System.out.println("The slope is " + slope);
+    System.out.println("anana".compareToIgnoreCase("apple"));
+
+	}
+}
+
+
+
+
