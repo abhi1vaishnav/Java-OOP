@@ -1,0 +1,33 @@
+/*Programmer's Name: Abhi
+*Date Last Modified: June 1, 2020
+*Purpose: To display the letter based on the position the user provides*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare variables
+    int position;
+
+    //create an array for storing the letters in the Alphabet of length 26
+    char alphabet[] = new char[26];
+
+    for (int i = 0; i < 26; i ++){
+      alphabet[i] = (char)(65 + i);
+    }
+
+    do{
+      System.out.println("Enter the position: ");
+      position = input.nextInt();
+    }while (position < 0 || position > 26);
+    
+    //output the letter at the inputted position
+    System.out.println("Position " + position + " is the letter " + alphabet[position-1]);
+
+  }
+}
