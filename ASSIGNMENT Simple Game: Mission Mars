@@ -1,0 +1,103 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 25, 2020
+*Purpose: To create a text-based adventure game*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+    
+    //declare variables
+    double win = 0.0, lose = 0.0, tally = 0.0, percent;
+    String name, response1, response2, response3, response4, response5, play_again;
+
+    //create a do while loop for the game to repeat until the user no longer wants to play again
+    do{
+
+      //inform the user of how to play the game
+      System.out.println("\nWelcome to MISSION MARS! \nIn this game you will answer a series of astronaut-related questions while on your trip to Mars. If you answer the questions correctly, you will have made it to Mars. However, one wrong move can put your life and the mission at stake!\nLets start off by having you enter your astronaut name: ");
+      name = input.next();
+      name = name.toUpperCase().trim();
+
+      //present the first question to the user
+      System.out.println("\n" + name + " is on board a mission to reach Mars. Does " + name + " take the spaceship or rocket?");
+      response1 = input.next();
+      
+      //make programming based on what the user chooses
+      if (response1.equalsIgnoreCase("Rocket")){
+        //the second question
+        System.out.println("\nDoes " + name + " exercise daily during the trip?(Yes/No)");
+        response2 = input.next();
+        //if the user exercises then the game continues but if they do not then the game ends
+        if (response2.equalsIgnoreCase("Yes")){
+          System.out.print("\nThere is an asteroid coming " + name + "'s way! Quick, do you steer left or right? ");
+          response3 = input.next();
+          //if they choose left then it is the wrong move
+          if (response3.equalsIgnoreCase("Left")){
+            System.out.println("\n" + name + "'s ship hit the asteroid and it bursts into flames. Better luck next time!");
+            lose ++;
+          }
+          //if they choose right then the game continues with one move remaining
+          else if (response3.equalsIgnoreCase("Right")){
+            //if they choose to save her then they also die but if they choose not to they have made it to Mars
+            System.out.println("\n" + name + " successfully dodged the asteroid. \nYour pal went to check on the supplies but the harness ripped. Does " + name + " choose to save her?(Yes/No)");
+            response4 = input.next();
+            if (response4.equalsIgnoreCase("Yes")){
+              System.out.println("\n" + name + " went to get her but are unable to. " + name + " too dies in the process.");
+              lose ++;
+            }
+            else if (response4.equalsIgnoreCase("No")){
+              System.out.println("\nBy not saving her " + name + " saves yourself as well. \nCongratulations, " + name + " has now made it to Mars!");
+              win ++;
+            }
+          }
+        }
+        //if they choose not to exercise then they get out of shape and do not get to Mars
+        else if (response2.equalsIgnoreCase("No")){
+          System.out.print("\n" + name + "'s body cannot handle the immense workload in space and it become out of proportion. " + name + " aborts the mission and heads back to Earth.");
+          lose ++;
+        }
+      }
+      //the spaceship works fine but it is slower and takes longer, there is one more question to see if they make it to Mars
+      else{    
+        //if the user checks the room, they die because of the fire, but if they do not then they have made Mars after a crew member recognizes it and puts it out  
+        System.out.println("\nThe spaceship was not inspected in several years. But luckily for " + name + " it works just fine. \n" + name + " hears a sound coming in the maintenance room, does " + name + " check it out?(Yes/No)");
+        response5 = input.next();
+        if (response5.equalsIgnoreCase("Yes")){
+          System.out.println("\nThere is a fire! However, " + name + " forgets the fire extinguisher and the fire burns the entire ship. Game Over!");
+          lose ++;
+        }
+        else{
+          System.out.println("\nThere was a fire in the maintenance room but another crew member put it out in time! \nCongratulations, " + name + " has made it to Mars!");
+          win ++;
+        }
+      }
+      
+      //ask the user if they want to play again
+      System.out.println("\nDo you want to play again?");
+      //get the user's choice
+      play_again = input.next();
+      //add to the number of times the user plays the game
+      tally ++;
+
+    } while (!play_again.equalsIgnoreCase("No") && !play_again.equalsIgnoreCase("N"));
+
+    //after the user is done playing, output the number of wins, losses and win percentage
+    System.out.println("\nTotal Number of Wins: " + win);
+    System.out.println("Total Number of Losses: " + lose);
+
+    //calculate the user's win percentage
+    percent = (win/tally)*100;
+    //round the percent to the nearest hundredth
+    percent *= 100;
+    percent = Math.round(percent);
+    percent = percent/100;
+    //output the user's win percentage
+    System.out.println("\nYour win percentage is " + percent + "%");
+
+  }
+}
