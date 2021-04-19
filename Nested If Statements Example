@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.Random;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+    /*
+    Random rand = new Random();
+
+    int num;
+    int num1;
+    String playAgain;
+    //loop to allow user to play again
+    do{
+      num1 = rand.nextInt(10+1);
+
+      //loop to check user's guess
+      do{
+        System.out.println("Enter a number between 1 and 10.");
+        num = input.nextInt();
+
+        if (num != num1){
+          System.out.println("Try again!");
+        }
+
+      } while(num != num1);
+      System.out.println("Congrats! You won!");
+
+      System.out.println("Do you want to play again? yes or no?");
+      playAgain = input.next();
+
+    } while (!playAgain.equalsIgnoreCase("No"));
+    */
+
+    char week, cohort;
+
+    do{
+      System.out.println("Enter the week (A/B)");
+      week = input.next().charAt(0);
+    }while (week != 'A' && week != 'B');
+
+    do{
+      System.out.println("Enter the cohort (A/B)");
+      cohort = input.next().charAt(0);
+    } while(cohort != 'A' && cohort != 'B');
+
+    if (week == 'A'){
+      if (cohort == 'A'){
+        System.out.println("You do not have school today!");
+      }
+      else{
+        System.out.println("You have school today!");
+      }
+    }
+    if (cohort == 'B'){
+      System.out.println("You do not have school today!");
+    }
+
+  }
+}
