@@ -1,0 +1,145 @@
+//Name: Abhi Vaishnav
+//Date: September 8, 2020
+//Assignment: Basic Review concepts Examples
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+    /*
+    //Variables
+    String name;
+    Boolean yesno;
+    float num;
+    double num1;
+    int wholenum = 10;
+    char initial;
+
+    System.out.println("Enter your name: ");
+    name = input.next();
+
+    System.out.println("Enter a decimal number: ");
+    num1 = input.nextDouble();
+
+    System.out.println("Enter a whole number: ");
+    wholenum = input.nextInt();
+
+    System.out.println("Enter a boolean value: ");
+    yesno = input.nextBoolean();
+
+    System.out.println("Hello " + name);
+    */
+
+    /*
+    //variables
+    int grade1, grade2, grade3, grade4;
+    double average;
+
+
+    //Get user input of grades
+    System.out.println("Enter your first grade: ");
+    grade1 = input.nextInt();
+
+    System.out.println("Enter your second grade: ");
+    grade2 = input.nextInt();
+
+    System.out.println("Enter your third grade: ");
+    grade3 = input.nextInt();
+
+    System.out.println("Enter your fourth grade: ");
+    grade4 = input.nextInt();
+
+    input.close();
+
+    //calculate Average
+    average = (grade1 + grade2 + grade3 + grade4)/4;
+
+    //Check average to see if the student made the honour roll
+    if (average >= 80){
+      System.out.println("Congrats! You made the honour roll");
+    }
+    else{
+      System.out.println("Sorry! not this time");
+    }
+    */
+
+    /*
+    //variables
+    char cohort;
+
+    //Get user input for cohort
+    System.out.println("Enter your cohort (A/B): ");
+    cohort = input.next().charAt(0);
+
+    //Check cohort and output whether or not they have school today
+    switch (cohort){
+
+      case 'A':
+        System.out.println("You do not have school today!");
+        break;
+
+      case 'B':
+        System.out.println("You have school today!");
+        break;
+
+      default:
+        System.out.println("Invalid input");
+        break;
+    }
+    */
+
+
+    /*
+    //Purpose: to ask how many people are coming to the party, and then ask for each person's name
+    
+    //variables
+    int numPeople;
+    String name;
+
+    //Enter the number of people coming
+    System.out.println("How many people are coming to the party: ");
+    numPeople = input.nextInt();
+    
+    //Loop through each person coming and print a welcome message
+    for (int i = 1; i <= numPeople; i++){
+      System.out.println("Enter your name: ");
+      name = input.next();
+      System.out.println("Guest #" + i);
+      System.out.println("Welcome to the party " + name + "!");
+    }
+    */
+
+    //Purpose: Have the user guess a number between 1 and 10 and make them play until they guess it correct
+
+    /*
+    //variables
+    int num;
+
+    System.out.println("Enter a number between 1 and 10");
+    num = input.nextInt();
+
+    while (num != 8){
+      System.out.println("Sorry, try again!");
+      System.out.println("Enter a number between 1 and 10");
+      num = input.nextInt();
+    }
+    System.out.println("Congrats! You got it!");
+    */
+
+    //variables
+    int num;
+
+    do{
+      System.out.println("Enter a number between 1 and 10");
+      num = input.nextInt();
+      if (num != 8){
+        System.out.println("Try again!");
+      }
+    }while (num != 8);
+
+    System.out.println("Congrats! You got it!");
+
+
+  }
+}
