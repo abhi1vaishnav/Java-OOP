@@ -1,0 +1,54 @@
+/*
+ * Example 2 - Multi-Dim Arrays
+ * Programmer name:
+ * Date:
+ * Purpose: To read in and store the test scores of each student from different sections of the Computer Science class. It creates three-dimensional array to store the test scores of students. There are two classes, three students in each class, and two test results for each student. 
+ */
+
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+
+    Scanner input=new Scanner(System.in);
+		
+    //2 represents the number of Computer Science classes
+		//3 represents the number of students in each class
+		//2 represents the number of tests for each student
+
+		//declare and Instantiate a 3D array
+		double test [][][] = new double [2][3][2];
+		
+		//nested for loops to input values into the array
+    //loop through the classes
+		for (int x = 0; x < test.length;x++){
+      System.out.println("Class #" + (x+1));
+      //loop through the students
+      for (int y = 0; y < test[x].length;y ++){
+        System.out.println("Student #" + (y+1));
+        //loop through the tests
+        for (int z = 0; z < test[x][y].length;z ++){
+          System.out.println("Test #" + (z+1) + ": ");
+          test [x][y][z] = input.nextDouble();
+
+        }
+      }
+    }
+
+		//nested for loops to print marks
+		for (int x = 0; x < test.length; x ++){
+      System.out.println("--Class #" + (x + 1) + "--");
+
+      for (int y = 0; y < test[x].length; y ++){
+        System.out.println("*Student #" + (y+1) + "*");
+
+        for (int z = 0; z < test [x][y].length; z ++){
+          System.out.println("Test #" + (z + 1) + ": " + test[x][y][z] + "%");
+
+        }
+      }
+    }
+
+  }
+}
