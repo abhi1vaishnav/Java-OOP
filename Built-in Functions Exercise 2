@@ -1,0 +1,76 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 3, 2020
+*Purpose: To check if the username and password of the user meets a particular criteria*/
+
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    String username, done = "", password, grant = "", temporary_username, temporary_password;
+    int bank, password_count;
+
+    //create a do while loop to repeat as long as the user enters a username and/or password which do not meet the criteria
+    do{
+
+    //ask the user to enter their username
+    System.out.println("The username must begin with the letter A and be at least 6 characters long");
+    System.out.println("Enter the username: ");
+    //get the username
+    username = input.next();
+
+    //calculate the length of the username
+    bank = username.length();
+
+    //convert the username to all upper case characters to allow the user to start their username with the lowercase letter a
+    temporary_username = username.toUpperCase();
+
+    //create an if statement for the username to determine whether it meets the criteria
+    if (temporary_username.startsWith("A") && bank >= 6){
+      //if the criteria has been met then change the value of the variable to allow the user to continue to the password portion of the activity
+      done = "green";
+    }
+    else{
+      System.out.println("That is an invalid username.");
+    }
+
+    }while (!done.equals("green"));
+
+    //create a do while loop for the password
+    do{
+
+      //inform the user of the criteria for the password
+      System.out.println("The password must end with the letter G and be at least 8 characters long");
+
+      //prompt the user to enter the password
+      System.out.println("Enter the password: ");
+      //get the password from the user
+      password = input.next();
+
+      //calculate the length of the password
+      password_count = password.length();
+
+      //convert the password to all upper case characters to allow the user to end their password with the lowercase letter g
+      temporary_password = password.toUpperCase();
+
+      //create an if statement to determine if the password met the criteria
+      if (temporary_password.endsWith("G") && password_count >= 8){
+        //if the criteria has been met then change the value of the variable to allow the user to continue
+        grant = "green";
+      }
+      else{
+        System.out.println("The password is invalid");
+      }
+
+    }while(!grant.equals("green"));
+    
+    //print the username and the password to the user
+    System.out.println("\nUsername: " + username);
+    System.out.println("Password: " + password);
+  }
+}
