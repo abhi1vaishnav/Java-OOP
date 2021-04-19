@@ -1,0 +1,70 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 6, 2020
+*Purpose: To display the province and population of a Canadian city*/
+
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    char city;
+
+    //prompt the user to enter a Canadian city code
+    System.out.println("Enter a city code: ");
+    //get the one letter code from the user
+    city = input.next().charAt(0);
+
+    //create an if staement for the different Canadian cities
+    if (city == 'T'){
+      //output the city, population and province of each city
+      System.out.println("Toronto");
+      System.out.println("Population: 2 930 000");
+      System.out.println("Province: Ontario");
+    }    
+    else if (city == 'M'){
+      //city code is M for Montreal
+      System.out.println("Montreal");
+      System.out.println("Population: 1 780 000");
+      System.out.println("Province: Quebec");
+    }
+    else if (city == 'V'){
+      //city code is V for Vancouver
+      System.out.println("Vancouver");
+      System.out.println("Population: 675 218");
+      System.out.println("Province: British Columbia");
+    }
+    else if (city == 'O'){
+      //city code is O for Ottawa
+      System.out.println("Ottawa");
+      System.out.println("Population: 994 837");
+      System.out.println("Province: Ontario");
+    }
+    else if (city == 'E'){
+      //city code is E for Edmonton
+      System.out.println("Edmonton");
+      System.out.println("Population: 981 280");
+      System.out.println("Province: Alberta");
+    }
+    else if (city == 'C'){
+      //city code is C for Calgary
+      System.out.println("Calgary");
+      System.out.println("Population: 1 336 000");
+      System.out.println("Province: Alberta");
+    }
+    else if (city == 'R'){
+      System.out.println("Regina");
+      System.out.println("Population: 228 928");
+      System.out.println("Province: Saskatchewan");
+    }
+    else{
+      //display message if the city code is not recognized
+      System.out.println("Invalid City Code");
+    }
+
+  }
+}
