@@ -1,0 +1,62 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To determine the total cost of ice cream*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    int cost = 0, scoop = 0;
+    String flavour = "";
+    int cookie = 0, butter = 0, cotton = 0, bubble = 0;
+
+    //prompt the user to enter the number of ice creams they want to order
+    System.out.println("Enter the number of ice creams you would like to order: ");
+    //get the number of ice creams
+    scoop = input.nextInt();
+    //enter next line so it does not skip over any of the next user input commands
+    input.nextLine();
+
+    //calculate the cost of the ice creams
+    cost = scoop*4;
+
+    //create a for statement for the user to enter the flavour of the number of scoops they have ordered
+    for (int i = 1; i <= scoop; i++){
+      
+      //get the flavour the user wants to enter
+      System.out.println("Enter the flavour of ice cream #" + i + " (cookies and cream, \nbutterscotch ripple, cotton candy or bubble gum): ");
+      //get the flavour of the ice cream from the user
+      flavour = input.nextLine();
+
+      //create an if statement to group the flavours
+      if (flavour.equalsIgnoreCase("Cookies and cream")){
+        cookie += 1;
+      }
+      else if (flavour.equalsIgnoreCase("Butterscotch ripple")){
+        butter += 1;
+      }
+      else if (flavour.equalsIgnoreCase("Cotton candy")){
+        cotton += 1;
+      }
+      else{
+        bubble += 1;
+      }
+    }
+
+    //output the flavours followed by the cost
+    System.out.println("Flavour\t      Number of Ice Creams");
+    System.out.println("Cookies & Cream\t\t    " + cookie);
+    System.out.println("Butterscotch ripple\t\t" + butter);
+    System.out.println("Cotton candy\t\t    " + cotton);
+    System.out.println("Bubble gum\t\t        " + bubble);
+
+    System.out.println("The total cost is: $" + cost);
+
+  }
+}
