@@ -1,0 +1,39 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 3, 2020
+*Purpose: Create a story with a name in it*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    String name, choice;
+
+    //create a do while loop so the user can repeat the story with different names
+    do{
+
+      //prompt the user to enter their name
+      System.out.println("Enter your name: ");
+      //get the user's name
+      name = input.next();
+
+      //print the stroy to the user
+      System.out.println("Once upon a time " + name + " went to the village to buy a loaf of bread for his family to eat as they were short of food during unprecedented times of the coronavirus pandemic.");
+      System.out.println("However, little did " + name + " know most of the necessities were out in the stores across his remote village. So he went store to store looking for his bread and he finally came across this one shop which said in big bold letters across a banner from the top: WELCOME " + name + "!");
+      System.out.println("Exhausted and on the verge of giving up his hopes he went inside and all the lights were turned off. But then " + name + " heard something");
+      System.out.println("His family and friends were all there to wish " + name + " a happy birthday." );
+
+      //prompt the user if they want to do the story with a different name
+      System.out.println("Would you like to do the story with a different name? (Y/N)");
+      //get the user's choice
+      choice = input.next();
+
+    }while(!choice.equalsIgnoreCase("N"));
+
+  }
+}
