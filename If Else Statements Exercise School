@@ -1,0 +1,32 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 14, 2020
+*Purpose: To display a message depending on the school the user attends*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object to get input from user
+    Scanner input = new Scanner (System.in);
+
+    //declare variable for storing the name of the school
+    String school;
+
+    //prompt the user to enter the school name
+    System.out.println("Enter the school you go to: ");
+    //get the users school
+    school = input.nextLine ();
+
+    //create an if statement depending on the school they have entered
+    if (!school.equalsIgnoreCase("JCR") && !school.equalsIgnoreCase("Richardson") && !school.equalsIgnoreCase("J. Clarke Richardson")){
+      //if the user does not enter the school name to be J. Clarke Richardson, tell them they go to a different school
+        System.out.println("You go to a different school!");
+    }
+    else{
+      //if the user goes to the same school display a welcome message
+      System.out.println("Welcome to our School!");
+    }
+  }
+}
