@@ -1,0 +1,51 @@
+/*Programmer's Name: Abhi
+*Date Last Modified: June 1, 2020
+*Purpose: To get the grades of 4 courses and display the those courses passed and those failed*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare variables for the user's name, pass and fail
+    int pass = 0, fail = 0;
+    String name;
+
+    //decalre array of length 4 for the 4 courses
+    int course[] = new int [4];
+
+    //prompt the user to enter their name
+    System.out.println("Enter your name: ");
+    //get the user's name
+    name = input.nextLine();
+
+    for (int i = 0; i < 4; i ++){
+      System.out.println("Enter grade #" + (i+1) + ": ");
+      course [i] = input.nextInt();
+
+      //create an if statement to store the grade as a pass or a fail
+      if (course[i] >= 50){
+        pass ++;
+      }
+      else{
+        fail ++;
+      }
+    }
+
+    //display how many courses the person has passed and failed
+    if (pass == 4){
+      System.out.println(name + " has passed all 4 courses");
+    }
+    else if (fail == 4){
+      System.out.println(name + " has failed all 4 courses");
+    }
+    else{
+      System.out.println(name + " has passed " + pass + " courses and failed " + fail + " courses.");
+    }
+
+  }
+}
