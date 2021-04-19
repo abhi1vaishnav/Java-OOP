@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner (System.in);
+
+    /*
+    // Exercise 1
+    String courses[][] = {{ "   Math", "   English", "Art" },{ "   Science", "History", "Law"},{"   Music", "Civics", "Math" },{"   English", "French", "Math"}};
+
+    System.out.println("Period Ryan   Joe      Sam");
+
+    // output the courses using a for loop
+    for (int x = 0; x < courses.length; x++) {
+      System.out.print("\n" + (x + 1) + "\t");
+      for (int y = 0; y < courses[x].length; y++) {
+        System.out.print(courses[x][y] + "\t");
+      }
+    }
+    */
+
+    /*
+    //Exercise 2
+    //2D array of size 5x4
+    int num [][] = new int [5][4];
+
+    //get the user to input the integer
+    for (int x = 0; x < num.length; x ++){
+      for (int y = 0; y < 3; y ++){
+        //get the user input for each integer
+        System.out.println("Enter the number for row " + (x + 1) + " and column " + (y + 1) + ": ");
+        num[x][y] = input.nextInt();
+      }
+    }
+
+    //get the product of each row of numbers
+    for (int x = 0; x < num.length; x ++){
+      num [x][3] = num[x][0]*num [x][1]*num[x][2];
+    }
+
+    //print the header
+    System.out.println("\nNumber 1\tNumber 2\tNumber 3\tProduct");
+
+    //print the numbers and the product of each row of numbers beside it
+    for (int x = 0; x < num.length; x ++){
+
+      //for loop to control the columns
+      for (int y = 0; y < num[x].length; y ++){
+        System.out.print(num[x][y] + "\t\t\t");
+      }
+      System.out.println();
+    }
+    */
+
+    //Exercise 3
+    
+    //variables
+    String menu = "Yes", password = "password";
+    int start;
+
+    //make an array of size 5x3
+    String schedule [][] = new String [5] [3];
+
+    //initialize each value in the array to the desired message
+    for (int x = 0; x < schedule.length; x ++){
+      for (int y = 0; y < schedule[x].length; y ++){
+        schedule [x] [y] = "Courses not yet available for this day!";
+      }
+    }    
+    //
+    do {
+
+      do {
+        //ask the user if they are a student or an admin
+        System.out.println("\nAre you a: \n1. Administrator\n2. Student\n\nEnter the number: ");
+        start = input.nextInt();
+      } while (start != 1 && start != 2);
+
+      
+
+    } while (!menu.equalsIgnoreCase("No"));
+
+  }
+}
