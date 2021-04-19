@@ -1,0 +1,32 @@
+/*Name: Abhi
+*Date: September 18, 2020
+*Purpose: To create a fully functional program using a turnary operator*/
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+
+    //variables
+    int n, n1, result;
+    String choice;
+
+    System.out.println("Enter the first number: ");
+    n = input.nextInt();
+
+    System.out.println("Enter the second number: ");
+    n1 = input.nextInt();
+
+    do{
+      System.out.print("\nDo you want to add or multiply the two numbers: ");
+      choice = input.next();
+    }while (!choice.equalsIgnoreCase("add") && !choice.equalsIgnoreCase("multiply"));
+
+    choice = choice.toLowerCase();
+
+    result = (choice.equals("add")) ? n + n1 : n * n1;
+
+    System.out.println("\nThe result is: " + result);
+    
+  }
+}
