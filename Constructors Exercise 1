@@ -1,0 +1,55 @@
+class Main {
+  public static void main(String[] args) {
+    
+    //create 2 objects
+    Household h1 = new Household();
+    Household h2 = new Household();
+
+    h2.setOccupants(14);
+    h2.setIncome(5011000);
+
+    System.out.println("\nHousehold #1\nOccupants: " + h1.getOccupants() + " People\nIncome: " + h1.getIncome());
+
+    System.out.println("\nHousehold #2\nOccupants: " + h2.getOccupants() + " People\nIncome: " + h2.getIncome());
+
+  }
+}
+
+
+
+import java.text.NumberFormat;
+
+public class Household{
+
+  //member variables
+  int occupants;
+  double income;
+
+  //constructor
+  public Household () {
+    occupants = 2;
+    income = 40000;
+  }
+
+  public void setOccupants (int o){
+    occupants = o;
+  }
+
+  public void setIncome (double i){
+    income = i;
+  }
+
+  public int getOccupants (){
+    return occupants;
+  }
+
+  public String getIncome (){
+    
+    //convert the double price to money
+    NumberFormat money = NumberFormat.getCurrencyInstance();
+
+
+    return money.format(income);
+  }
+
+}
