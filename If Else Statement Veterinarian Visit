@@ -1,0 +1,48 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 14, 2020
+*Purpose: To display the procedure and fee of a veterinarian visit*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object to get input from user
+    Scanner input = new Scanner (System.in);
+
+    //declare variable for getting the service from the user
+    String service;
+
+    //prompt the user to enter the service they would like
+    System.out.println("Enter the service: ");
+    service = input.next();
+
+    //create if statement for the different services at the clinic
+    if (service.equals("RV") || service.equals("1")){
+      //the first possible procedure is Rabies vaccination at $15
+      System.out.println("Procedure: Rabies Vaccination");
+      System.out.println("Fee: $15");
+    }
+    //second option is Other shots at $5
+    else if (service.equals("OS") || service.equals("2")){
+      System.out.println("Procedure: Other Shots");
+      System.out.println("Fee: $5");
+    }
+    else if (service.equals("OV") || service.equals("3")){
+      //the third option is office visit for $10
+      System.out.println("Procedure: Office Visit");
+      System.out.println("Fee: $10");
+    }
+    else if (service.equals("SN") || service.equals("4")){
+      //the fourth option is spay or neuter for $500
+      System.out.println("Procedure: Spay or Neuter");
+      System.out.println("Fee: $500");
+    }
+    else {
+      //if the receptionist enters something else dislay an appropriate message
+      System.out.println("Invalid Code");
+    }
+
+  }
+}
