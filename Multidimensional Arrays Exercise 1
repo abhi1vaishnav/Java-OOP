@@ -1,0 +1,83 @@
+class Main {
+  public static void main(String[] args) {
+    //3 represents the number of buildings
+    //4 represents the number of floors in every building
+    //2 represents the number of apartments on every floor
+
+    /*
+    //declare and initialize 3D array
+
+    int rent [] [] [] = {{{900, 600},{500,450},{300,100},{1000,1500}},
+    {{440,800},{100,110},{900,760},{1050,860}},
+    {{900,800},{1110,400},{330,800},{700,800}}
+    };
+
+    //Change some of the values for Rents
+    rent[0][0][0]=275;
+    rent[2][1][0]=5000;
+
+    //Print information 
+		System.out.println("Number of buildings: " + rent.length);
+		System.out.println("Number of floors in every building: " + rent[0].length);
+		System.out.println("Number of apartments on every floor: " + rent [0][0].length);
+	
+		//print all the rents
+    //loop through the buildings
+    for (int x = 0; x < rent.length; x ++){
+      System.out.println("--Building #" + (x+1) + "--");
+      //loop through the floors
+      for (int y = 0; y<rent[x].length; y ++){
+        System.out.println("*Floor #" + (y+1) + "*");
+        //loop through the apartments
+        for (int z = 0; z < rent[x][y].length;z ++){
+          System.out.println("Apartment #" + (z + 1) + ": $" + rent[x][y][z]);
+        }
+      }
+    }
+
+    */
+
+    //3 represents the number of buildings
+    //4 represents the number of floors in every building
+    //2 represents the number of apartments on every floor
+
+    
+    //declare and initialize 3D array
+
+    int rent [] [] [] = {{{900, 600},{500,450},{300,100},{1000,1500}},
+    {{440,800},{100,110},{900,760},{1050,860}},
+    {{900,800},{1110,400},{330,800},{700,800}}
+    };
+
+    //Change some of the values for Rents
+    rent[0][0][0]=275;
+    rent[2][1][0]=5000;
+
+    //Print information 
+		System.out.println("Number of buildings: " + rent.length);
+		System.out.println("Number of floors in every building: " + rent[0].length);
+		System.out.println("Number of apartments on every floor: " + rent [0][0].length);
+	
+    System.out.println("Building #\tFloor #\tApartment #1\tApartment #2");
+		//print all the rents
+    //loop through the buildings
+    for (int x = 0; x < rent.length; x ++){
+      System.out.print("\n" + (x+1) + "\t\t");
+      //loop through the floors
+      for (int y = 0; y<rent[x].length; y ++){
+        if (y == 0){
+          System.out.print((y+1) + "\t");
+        }
+        else {
+          System.out.print("\t\t" + (y+1) + "\t");
+        }
+        //loop through the apartments
+        for (int z = 0; z < rent[x][y].length;z ++){
+          System.out.print("$" + rent[x][y][z] + "\t\t");
+        }
+        System.out.println();
+      }
+    }
+
+  }
+}
