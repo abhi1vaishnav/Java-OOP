@@ -1,0 +1,62 @@
+//Name: Abhi
+//Date: October 21, 2020
+//Assignment: OOP Exercises
+
+class Main {
+  public static void main(String[] args) {
+    
+    //instantiate 5 video game objects
+    videoGame v1 = new videoGame();
+    videoGame v2 = new videoGame();
+    videoGame v3 = new videoGame();
+    videoGame v4 = new videoGame();
+    videoGame v5 = new videoGame();
+
+    //set each attribute for the every object
+    v1.setTitle("Vermon");
+    v1.setConsole("Nitendo Switch");
+    v1.setRating('M');
+    v1.setPrice(71.99);
+    v1.setQuantity(9);
+
+    v2.setTitle("Valorant");
+    v2.setConsole("XBOX");
+    v2.setRating('T');
+    v2.setPrice(91.99);
+    v2.setQuantity(10);
+
+    v3.setTitle("Hello Kitty");
+    v3.setConsole("PS4");
+    v3.setRating('E');
+    v3.setPrice(34.99);
+    v3.setQuantity(2);
+
+    v4.setTitle("Tetaria");
+    v4.setConsole("Wii");
+    v4.setRating('E');
+    v4.setPrice(45.97);
+    v4.setQuantity(63);
+
+    v5.setTitle("Tetris");
+    v5.setConsole("Nitendo Switch");
+    v5.setRating('M');
+    v5.setPrice(66.49);
+    v5.setQuantity(9);
+
+    //output the video game info
+    System.out.println("Game \t Title \t\t Console \t Rating \t Price \t\t Quantity");
+
+    System.out.println("1 \t\t" + v1.getTitle() + " \t" + v1.getConsole() + "\t\t" + v1.getRating() + "\t\t$" + v1.getPrice() + "\t\t\t" + v1.getQuantity());
+
+    System.out.println("2 \t\t" + v2.getTitle() + "    \t" + v2.getConsole() + "\t  \t" + v2.getRating() + "\t  \t$" + v2.getPrice() + "\t\t  \t" + v2.getQuantity());
+
+    System.out.println("3 \t\t" + v3.getTitle() + " \t" + v3.getConsole() + "\t\t\t" + v3.getRating() + "\t\t$" + v3.getPrice() + "\t\t\t" + v3.getQuantity());
+
+    System.out.println("4 \t\t" + v4.getTitle() + " \t\t" + v4.getConsole() + "\t\t\t" + v4.getRating() + "\t\t$" + v4.getPrice() + "\t\t\t" + v4.getQuantity());
+
+    System.out.println("5 \t\t" + v5.getTitle() + " \t" + v5.getConsole() + "\t\t" + v5.getRating() + "\t\t$" + v5.getPrice() + "\t\t\t" + v5.getQuantity());
+
+
+
+  }
+}
