@@ -1,0 +1,38 @@
+/*Programmer's Name: Abhi
+*Date Last Updated: March 24, 2020
+*Purpose: To practice Java programming skills*/
+
+//import the scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    //create the scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare the variables
+    int late;
+    String first_name;
+    String last_name;
+    int grade;
+
+    //get the first and last names of the user
+    System.out.println("Enter your first name: ");
+    first_name = input.next();
+
+    System.out.println("Enter your last name: ");
+    last_name = input.next();
+
+    //get the grade of the user
+    System.out.println("Enter your grade: ");
+    grade = input.nextInt();
+
+    //number of lates in the week
+    System.out.println("Enter the number of times you have been late to class this week: ");
+    late = input.nextInt();
+
+    //print the late slip using a one line print command
+    System.out.print("***********************************\nName: " + first_name + " " + last_name + "\nGrade: " + grade + "\nNumber of lates this week: " + late + "\n************************************");
+
+  }//end of main method
+}//end of class
