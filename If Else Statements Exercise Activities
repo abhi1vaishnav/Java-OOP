@@ -1,0 +1,81 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 14, 2020
+*Purpose: To display an activity based on a criteria*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //decalre variables for the different categories of age, recreation preference and availability
+    int age;
+    String rec, free;
+
+    //prompt the user to enter their age
+    System.out.println("Enter your age: ");
+    //get the user's age
+    age = input.nextInt();
+    //enter next line so it does not skip over any of the next user input commands
+    input.nextLine();
+
+    //prompt the user to enter their recreation preference of Arts and Crafts or Sports
+    System.out.println("Enter your recreation preference (Arts & Crafts,Sports):");
+    //get the user's recreation preference
+    rec = input.nextLine ();
+
+    //prompt the user to enter their availability
+    System.out.println("Enter your availability (Weekday, Weekend): ");
+    //get the user's availability
+    free = input.nextLine ();
+    
+    //create an if statement to give the user an activity
+    //case statements if the user is over 50
+    if (age > 50 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is knitting. ");
+    }
+    else if (age > 50 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is Sculpting. ");
+    }
+    else if (age > 50 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is Lawn Bowling. ");
+    }
+    else if (age > 50 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is pickleball. ");
+    }
+    //case statements if the user is over 12 but 50 or under
+    else if (age > 12 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is pottery. ");
+    }
+    else if (age > 12 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is scrapbooking. ");
+    }
+    else if (age > 12 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is soccer. ");
+    }        
+    else if (age > 12 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is tennis. ");
+    }
+    //case statements if the user is 12 or under
+    else if (age <= 12 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is Painting. ");
+    }
+    else if (age <= 12 && rec.equalsIgnoreCase("Arts & Crafts") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is Jewelry Making. ");
+    }
+    else if (age <= 12 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekday")){
+        System.out.println("Your best program is Basketball. ");
+    }
+    else if (age <= 12 && rec.equalsIgnoreCase("Sports") && free.equalsIgnoreCase("Weekend")){
+        System.out.println("Your best program is volleyball. ");
+    }
+    else{
+      //display an appropriate message if the user enters something unkown
+      System.out.println("Invalid Response");
+    }
+
+  }
+}
