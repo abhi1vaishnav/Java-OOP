@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //create 5 objects
+    Shirt s1 = new Shirt();
+    Shirt s2 = new Shirt();
+    Shirt s3 = new Shirt();
+    Shirt s4 = new Shirt(3,4);
+    Shirt s5 = new Shirt(5,6);
+
+    //collect shirt data for the first two objects
+    System.out.print("\nEnter the collar size for shirt #1: ");
+    s1.setCollar(input.nextInt());
+
+    System.out.print("\nEnter the sleeve size for shirt #1: ");
+    s1.setSleeve(input.nextInt());
+
+    System.out.print("\nEnter the collar size for shirt #2: ");
+    s2.setCollar(input.nextInt());
+
+    System.out.print("\nEnter the sleeve size for shirt #2: ");
+    s2.setSleeve(input.nextInt());
+
+    System.out.print("\nEnter the collar size for shirt #3: ");
+    s3.setCollar(input.nextInt());
+
+    System.out.print("\nEnter the sleeve size for shirt #3: ");
+    s3.setSleeve(input.nextInt());
+
+    //display the data
+    System.out.print("\n\nShirt #1\nMaterial: " + Shirt.material + "\nCollar Size: " + s1.getCollar() + " cm\nSleeve Size: " + s1.getSleeve() + " cm");
+
+    System.out.print("\n\nShirt #2\nMaterial: " + Shirt.material + "\nCollar Size: " + s2.getCollar() + " cm\nSleeve Size: " + s2.getSleeve() + " cm");
+
+    System.out.print("\n\nShirt #3\nMaterial: " + Shirt.material + "\nCollar Size: " + s3.getCollar() + " cm\nSleeve Size: " + s3.getSleeve() + " cm");
+
+    System.out.print("\n\nShirt #4\nMaterial: " + Shirt.material + "\nCollar Size: " + s4.getCollar() + " cm\nSleeve Size: " + s4.getSleeve() + " cm");
+
+    System.out.print("\n\nShirt #5\nMaterial: " + Shirt.material + "\nCollar Size: " + s5.getCollar() + " cm\nSleeve Size: " + s5.getSleeve() + " cm\n");
+
+
+  }
+}
+
+public class Shirt{
+
+  //member variables
+  int collarSize, sleeveSize;
+  static final String material = "Cotton";
+
+  public Shirt(){
+    collarSize = 0;
+    sleeveSize = 0;
+  }
+
+  public Shirt(int c, int s){
+    collarSize = c;
+    sleeveSize = s;
+  }
+
+  public void setCollar(int c){
+    collarSize = c;
+  }
+
+  public void setSleeve(int s){
+    sleeveSize = s;
+  }
+
+  public int getCollar(){
+    return collarSize;
+  }
+
+  public int getSleeve(){
+    return sleeveSize;
+  }
+
+}
