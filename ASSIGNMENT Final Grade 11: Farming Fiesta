@@ -1,0 +1,406 @@
+/*Programmer's Name: Abhi
+*Date Last Modified: June 15, 2020
+*Purpose; To create an interactive platform for farmers*/
+
+//import all java classes for scanner and random class
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //create random object
+    Random r = new Random ();
+
+    //declare variables
+    int area, density, order_num, harvest_choice, breed_name, livestock_choice, profile_update, profile_choice, choice, animal_types, farm_years;
+    String  calculator_pass, harvest_schedule = "There is no schedule set up yet. ", breed_continue, name, location;
+
+    //print the name of the program to the user
+    System.out.println("\n#### WELCOME TO FARMING FIESTA! FARMING NEEDS PROGRAMMING ####");
+
+    //the first step is creating the profile called Farm Face
+    System.out.println("### FARM FACE! CREATE YOUR PROFILE ###");
+
+    //the user starts off by entering their name
+    System.out.println("\nEnter your farmer name: ");
+    name = input.nextLine();
+
+    while (name.length() <= 1){
+      
+      //let the user know they have given an invalid response
+      System.out.println("Length of name must be greater than 1 character. Try Again!");
+      
+      //have the user enter their name
+      System.out.println("\nEnter your farmer name: ");
+      name = input.nextLine();
+
+    }
+
+    //get the location of the user's farm
+    System.out.println("\nEnter your farm location: ");
+    location = input.nextLine();
+    
+    //create a while loop to ensure they have given a proper location name
+    while (location.length() <= 2){
+
+      //let the user know they have given an invalid response
+      System.out.println("The location must be more than 2 characters!");
+
+      //get the location of the user's farm
+      System.out.println("\nEnter your farm location: ");
+      location = input.nextLine();
+
+    }
+
+    //get the approxiamate number of years the user has been living at their farm
+    System.out.println("\nEnter the approximate number of whole years you have been living in the farm: ");
+    farm_years = input.nextInt();
+
+    //use a while loop to ensure the number of years is positive
+    while (farm_years <= 0){
+      
+      //let the user know they have entered an invalid input
+      System.out.println("The number of years has to be greater than 0. Try Again!");
+      
+      //get the approxiamate number of years the user has been living at their farm
+      System.out.println("\nEnter the approximate number of whole years you have been living in the farm: ");
+      farm_years = input.nextInt();
+
+    }
+
+    //get the number of animals on the farm
+    System.out.println("\nLIVESTOCK TIME!\nEnter the number of different types of animals you have on the farm: ");
+    animal_types = input.nextInt();
+
+    //create a while loop to ensure the user has given at least 1 animal type
+    while (animal_types <= 0){
+      System.out.println("You must have enter at least 1 type of animal on the farm.");
+      //get the number of animals on the farm
+      System.out.println("\nLIVESTOCK TIME!\nEnter the number of different types of animals you have on the farm: ");
+      animal_types = input.nextInt();
+    }
+
+    //create an array of the length of the number of types of animals on the farm to store the names of the types of animals
+    String animal_name[] = new String [animal_types];
+
+    //create a for loop to get the names of the types of animals
+    for (int i = 0; i < animal_types; i ++){
+      System.out.println("\nEnter the name of animal type #" + (i+1) + ": ");
+      animal_name [i] = input.next();
+    }
+
+    //create an array to store the number of each type of animal
+    int animal_number [] = new int [animal_types];
+
+    //create a for loop to get the number of each type of animal on the farm
+    for (int i = 0; i < animal_types; i ++){
+      //get the population of the animal
+      System.out.println("\nEnter the number of " + animal_name[i] + ": ");
+      animal_number [i] = input.nextInt();
+      while (animal_number[i] <= 0){
+        System.out.println("The population must be 1 or greater.");
+        //get the population of the animal
+        System.out.println("\nEnter the number of " + animal_name[i] + ": ");
+        animal_number [i] = input.nextInt();  
+      }
+    }
+
+    //display a message when the user is done creating their farm face
+    System.out.println("\n:) FARM FACE SUCCESSFULLY CREATED (:");
+
+    do{
+
+      //display the menu with all the options to the user
+      System.out.println("\n#### FARM FIESTA MAIN MENU ####\n1... View or Update Farm Face\n2... View or Update Livestock Count\n3... View, Make or Change Crop Harvesting Schedule\n4... View  Orders\n5... Crop Calculator\n6... Exit");
+      
+      //get the user's choice
+      System.out.println("\nEnter your choice here: ");
+      choice = input.nextInt();
+
+      //create a while loop to account for invalid input
+      while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6){
+
+        //inform the user they have entered an invalid option
+        System.out.println("That is an invalid option!");
+
+        //display the menu with all the options to the user
+        System.out.println("\n#### FARM FIESTA MAIN MENU ####\n1... View or Update Farm Face\n2... View or Update Livestock\n3... View, Make or Change Crop Harvesting Schedule\n4... View Harvest Orders\n5... Crop Calculator\n6... Exit");
+        
+        //get the user's choice
+        System.out.println("Enter your choice here: ");
+        choice = input.nextInt();
+
+      }
+
+      switch (choice){
+
+        case 1:
+
+          //if the user chooses their profile present them with profile options
+          System.out.println("\n### Enter 1... View Farm Face, 2... Update Farm Face ###");
+          System.out.println("Enter your choice here: ");
+          profile_choice = input.nextInt();
+
+          switch (profile_choice){
+            case 1:
+              //if the user chooses to view their profile, show them the information
+              System.out.println("\t\tFARM FACE\nFarmer Name: " + name + "\nFarm Location: " + location + "\nYears in the Farm: " + farm_years);
+              break;
+            case 2:
+              //if the user chooses to update their farm face, present them with the options of what they can update
+              System.out.println("\n## Change 1... Farmer Name, 2... Farm Location 3.. Number of Years Spent In the Farm. ##");
+              System.out.println("Enter your choice here: ");
+              profile_update = input.nextInt();
+
+              switch (profile_update){
+                case 1:
+                  //if the user chooses to change their farmer name, recall the name variable
+                  System.out.println("\nEnter the new farmer name: ");
+                  input.nextLine();
+                  name = input.nextLine();
+                  while (name.length() <= 1){
+                    //let the user know they have given an invalid response
+                    System.out.println("Length of name must be greater than 1 character. Try Again!");
+                    //have the user enter their name
+                    System.out.println("\nEnter your farmer name: ");
+                    name = input.nextLine();
+                  }
+                  break;
+                case 2:
+                  //if the user chooses to update their farm location, recall location variable
+                  System.out.println("\nEnter the new farm location: ");
+                  input.nextLine();
+                  location = input.nextLine();
+                  //create a while loop to ensure they have given a proper location name
+                  while (location.length() <= 2){
+                    //let the user know they have given an invalid response
+                    System.out.println("The location must be more than 2 characters!");
+                    //get the location of the user's farm
+                    System.out.println("\nEnter your farm location: ");
+                    location = input.nextLine();
+                  }
+                  break;
+                case 3:
+                  //if the user chooses to change the number of years they have spent in the farm, recall the farm_years variable
+                  System.out.println("\nEnter the new number of years spent in the farm: ");
+                  farm_years = input.nextInt();
+                  //use a while loop to ensure the number of years is positive
+                  while (farm_years <= 0){
+                    //let the user know they have entered an invalid input
+                    System.out.println("The number of years has to be greater than 0. Try Again!");
+                    //get the approxiamate number of years the user has been living at their farm
+                    System.out.println("\nEnter the approximate number of whole years you have been living in the farm: ");
+                    farm_years = input.nextInt();
+                  }
+                  break;
+                default:
+                  System.out.println("Invalid choice!");
+                  break;
+              }
+              break;
+              default:
+                System.out.println("Invalid choice!");
+                break;
+          }
+          break;
+        case 2:
+
+          //if the user chooses livestock count, present them with the options
+          System.out.println("\n### Enter 1... View Livestock Count, 2... Update Livestock Count ###");
+          System.out.println("Enter your choice here: ");
+          livestock_choice = input.nextInt();
+
+          switch (livestock_choice){
+            case 1:
+              
+              //if the user chooses to view the livestock count, show them the current count
+              System.out.println("\nAll animals and the number of the animal");
+              System.out.println("Animal         Count");
+              for (int i = 0; i < animal_types; i ++){
+                System.out.println(animal_name[i] + "            " + animal_number[i]);
+              }
+              break;
+            case 2:
+
+              //if the user chooses to update the livestock count, ask what they want to update then get the new count of the animal
+              //use a do while loop to iterate through the process until the user no longer wants to update the count of any animal
+              do{
+
+                //output the count of each animal
+                System.out.println("\nAnimal       Count\n");
+                for (int i = 0; i < animal_types; i ++){
+                  System.out.println((i + 1) + ". " + animal_name[i] + "        " + animal_number[i]);
+                }
+                //ask the user which animal they would like to update the count of
+                System.out.println("\nEnter the NUMBER of the animal you would like to update the count of: ");
+                breed_name = input.nextInt();
+                //create a while loop to ensure the animal of the number the user gave exists
+                while ((animal_types - breed_name) < 0){
+                  //let the user know they must give a choose from the options
+                  System.out.println("You must enter a valid option!");
+                  //output all the animals and the count of each animal
+                  System.out.println("\nAnimal \tCount\n");
+                  for (int i = 0; i < animal_types; i ++){
+                    System.out.println((i + 1) + ". " + animal_name[i] + "\t\t" + animal_number[i]);
+                  }
+                  System.out.println("\nEnter the number of the animal you would like to update the count of: ");
+                  breed_name = input.nextInt();
+                }
+                //prompt the user to enter the new population
+                System.out.println("\nEnter the new number of the animal: ");
+                animal_number[breed_name-1] = input.nextInt();
+                //use a while loop to ensure the population is a positive integer
+                while (animal_number[breed_name-1] < 0){
+                  //let the user know the population cannot be negative
+                  System.out.println("The population cannot be negative!");
+                  //prompt the user to enter the new population
+                  System.out.println("\nEnter the new number of the animal: ");
+                  animal_number[breed_name-1] = input.nextInt();
+                }
+
+                System.out.println("Would you like to register or update another animal? (y/n)");
+                input.nextLine();
+                breed_continue = input.nextLine();
+
+                //use a while loop to ensure the user has given an appropriate answer
+                while (!breed_continue.equalsIgnoreCase("y") && !breed_continue.equalsIgnoreCase("n")){
+                  System.out.println("Please enter 'y' or 'n'!");
+                  //ask the user if they would like want to continue with another crop
+                  System.out.println("Would you like to register or update another animal? (y/n)");
+                  breed_continue = input.next();
+                }
+
+              }while (!breed_continue.equalsIgnoreCase("n"));
+              break;
+            
+            default:
+              System.out.println("That is not an option!");
+              break;
+          }
+          break;
+
+        case 3:
+          //present the user with the different options if they choose the crop harvest schedule
+          System.out.println("\n### Enter 1... View Crop Harvest Schedule, 2... Make or Change Crop Harvest Schedule ###");
+          harvest_choice = input.nextInt();
+          switch (harvest_choice){
+            case 1:
+              //if the user chooses to view the harvest schedule, show them the schedule
+              System.out.println(harvest_schedule);
+              break;
+            case 2:
+              //allow the user to enter the new schedule if they choose to change it
+              System.out.println("\nEnter the crop harvest schedule: ");
+              input.nextLine();
+              harvest_schedule = input.nextLine();
+              break;
+            default:
+              //if the user enters another number let them know it is an invalid option
+              System.out.println("That is not an option!");
+              break;
+          }
+          break;
+
+        case 4:
+          
+          //if the user chooses to view any harvest orders, show them the order based on a random selection generator
+          order_num = r.nextInt(8);
+
+          switch (order_num){
+              //there are 8 different random order possibilities from 0 to 7
+            
+            case 0:
+              System.out.println("\n10 pounds of corn and 3 pounds of beef.");
+              break;
+            
+            case 1:
+              System.out.println("\n5 pounds of apple, 15 pounds of squash, 12 pounds of raddish and 18 pounds of tomato.");
+              break;
+            
+            case 2:
+              System.out.println("\n7 pounds of maize, 25 pounds of wheat, 3 pounds of strawberries, 8 pounds of chicken.");
+              break;
+            
+            case 3:
+              System.out.println("\n14 pounds of sugarcane, 19 pounds of raspberries, 6 pounds of barley.");
+              break;
+            
+            case 4:
+              System.out.println("\n9 pounds of oat, 22 pounds of soybean. ");
+              break;
+            
+            case 5:
+              System.out.println("\n15 pounds of canola.");
+              break;
+            
+            case 6:
+              System.out.println("\n4 pounds of potatoes, 27 pounds of lettuce, 11 pounds of sugar beetroot, 8 pounds of chicken and 20 pounds of goat leg.");
+              break;
+            
+            case 7:
+              System.out.println("\n27 pounds of wheat, 7 pounds of grapes and 7 pounds of huckleberries.");
+              break;
+          }
+          break;
+
+        case 5:
+          //create a do while loop for the user to iterate through the loop for as many crops as they would like
+          do{
+
+            System.out.println("\n### Crop Calculator ###");
+            //provide the instructions of the calculator to the user
+            System.out.println("\n## Enter the area and density of the crop, find out how much water it needs daily! ##");
+            
+            //get the area of the crop
+            System.out.println("\nEnter the area of the crop in square metres: ");
+            area = input.nextInt();
+            
+            while (area <= 0){
+              System.out.println("The area must be greater than 0!");
+              //get the area of the crop
+              System.out.println("\nEnter the area of the crop in square metres: ");
+              area = input.nextInt();
+            }
+
+            //get the density of the crop
+            System.out.println("\nEnter the density of the crop in crops/square metre: ");
+            density = input.nextInt();
+            
+            while (density <= 0){
+              System.out.println("The area must be greater than 0!");
+              //get the density of the crop
+              System.out.println("\nEnter the density of the crop in crops/square metre: ");
+              density = input.nextInt();
+            }
+
+            //output the daily watering need for the crop
+            System.out.println("\n ## You will need " + area*density*4 + " gallons of water for your crop daily. ##");
+
+            //ask the user if they would like want to continue with another crop
+            System.out.println("\nWould you like to continue with another crop? (y/n)");
+            calculator_pass = input.next();
+
+            while (!calculator_pass.equalsIgnoreCase("y") && !calculator_pass.equalsIgnoreCase("n")){
+              System.out.println("Please enter 'y' or 'n'!");
+              //ask the user if they would like want to continue with another crop
+              System.out.println("\nWould you like to continue with another crop? (y/n)");
+              calculator_pass = input.next();
+            }
+
+          }while (!calculator_pass.equalsIgnoreCase("n"));
+          break;
+
+        case 6:
+          System.out.println("### Thank you for using FARMING FIESTA. Goodbye! ###");
+          break;
+      }
+
+    }while (choice != 6);
+
+    //destroy scanner object
+    input.close();
+  }
+}
