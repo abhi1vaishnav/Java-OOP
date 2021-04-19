@@ -1,0 +1,130 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //create 4 objects
+    Pay p1 = new Pay();
+    Pay p2 = new Pay();
+    //instantiate the objects
+    Pay p3 = new Pay(35,4,400.05,242.98);
+    Pay p4 = new Pay(21,2,900.90,413.81);
+
+    //collect data for the first two pay objects
+    System.out.print("\nEnter the number of hours worked for the first employee: ");
+    p1.setHours(input.nextDouble());
+
+    System.out.print("\nEnter the tax (%): ");
+    p1.setTax(input.nextDouble());
+
+    System.out.print("\nEnter the gross pay: $");
+    p1.setGross(input.nextDouble());
+
+    System.out.print("\nEnter the net pay: $");
+    p1.setNet(input.nextDouble());
+
+    System.out.print("\nEnter the number of hours worked for the second employee: ");
+    p2.setHours(input.nextDouble());
+
+    System.out.print("\nEnter the tax (%): ");
+    p2.setTax(input.nextDouble());
+
+    System.out.print("\nEnter the gross pay: $");
+    p2.setGross(input.nextDouble());
+
+    System.out.print("\nEnter the net pay: $");
+    p2.setNet(input.nextDouble());
+
+    //call the static method
+    Pay.business();
+
+    //output the data
+    System.out.println("\nPay #1\nHours: " + p1.getHours() + " hours\nTax: " + p1.getTax() + "%\nGross Pay: $" + p1.getGross() + "\nNet Pay: $" + p1.computeNetPay(p1.getHours(),Pay.salary,p1.getTax()));
+
+    System.out.println("\nPay #2\nHours: " + p2.getHours() + " hours\nTax: " + p2.getTax() + "%\nGross Pay: $" + p2.getGross() + "\nNet Pay: $" + p2.computeNetPay(p2.getHours(),Pay.salary));
+
+    System.out.println("\nPay #3\nHours: " + p3.getHours() + " hours\nTax: " + p3.getTax() + "%\nGross Pay: $" + p3.getGross() + "\nNet Pay: $" + p3.computeNetPay(p3.getHours(),Pay.salary,p3.getTax()));
+
+    System.out.println("\nPay #4\nHours: " + p4.getHours() + " hours\nTax: " + p4.getTax() + "%\nGross Pay: $" + p4.getGross() + "\nNet Pay: $" + p4.computeNetPay(p4.getHours(),Pay.salary));
+
+  }
+}
+
+
+
+public class Pay{
+
+  //member variables
+  double hours, tax, gross, net;
+  //static instance variable for hourly salary
+  static final double salary = 18.2;
+
+  //constructor and constructor overloading
+  public Pay(){
+    hours = 0;
+    gross = 0;
+    tax = 0; 
+    net = 0;
+  }
+
+  public Pay (double h, double t, double g, double n){
+    hours = h;
+    tax = t/100;
+    gross = g;
+    net = n;
+  }
+
+  //mutator methods
+  public void setHours (double h){
+    hours = h;
+  }
+
+  public void setTax (double t){
+    tax = t/100;
+  }
+
+  public void setGross (double g){
+    gross = g;
+  }
+
+  public void setNet (double n){
+    net = n;
+  }
+
+  //accessor methods
+  public double getHours (){
+    return hours;
+  }
+
+  public double getTax (){
+    return tax*100;
+  }
+
+  public double getGross(){
+    return gross;
+  }
+
+  public double getNet(){
+    return net;
+  }
+
+  //create two overloaded methods to compute the net
+  public double computeNetPay(double h,double p, double t){
+    gross = h*p;
+    //return the net pay
+    return gross-(1-t);
+  }
+
+  //compute the net pay assuming tax to be 0.13
+  public double computeNetPay(double h, double p){
+    return h*p*0.87;
+  }
+
+  //static method displays the business name and pay period
+  public static void business(){
+    System.out.println("\nYOKAMEMO FINANCIAL CONSULTATION FIRM\n\nPay Period: June 13, 2020 to October 11, 2020");
+  }
+
+}
