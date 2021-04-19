@@ -1,0 +1,492 @@
+//Name: Abhi
+//Date: October 13, 2020
+//Purpose: To create a fully functional and useful service for a dental agency
+
+import java.util.*;
+import java.text.NumberFormat;
+
+import com.sun.source.tree.WhileLoopTree;
+
+class Main {
+  
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner (System.in);
+    //variables
+    int choice;
+    String dentist = "negative";
+
+    System.out.println("\n|***************************************|");
+    System.out.println("\tWELCOME TO LTC DENTIST PORTAL!\t");
+    System.out.println("|***************************************|");
+
+    //create an arraylist to store a time for a check-in
+    ArrayList <String> times = new ArrayList <String>(Arrays.asList("4:15","4:30","5:10","5:40","6:20","6:50","7:05","7:55","8:15"));
+
+    //loop runs until the user chooses to exit
+    do{
+
+      //present the user with the main menu and options
+      System.out.println("\n      ***MAIN MENU***        ");
+      System.out.println("1. FIND YOUR LOCAL DENTIST");
+      System.out.println("2. BOOK A CHECK-IN WITH THE DENTIST (Must find dentist first)");
+      System.out.println("3. CALCULATE THE PRICE OF AN APPOINTMENT");
+      System.out.println("4. CONDUCT A CORONA VIRUS PATIENT SCREENING QUESTIONNAIRE AND GET INSTANT RESULTS");
+      System.out.println("5. REGISTER A PATIENT");
+      System.out.println("6. EXIT");
+
+      System.out.print("\nEnter the number: ");
+      //get the user's choice
+      choice = input.nextInt();
+
+      //ensure the user enters a valid option
+      while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6){
+        
+        System.out.println("Invalid Choice");
+        //present the user with the main menu and options
+        System.out.println("\n      ***MAIN MENU***        ");
+        System.out.println("1. FIND YOUR LOCAL DENTIST");
+        System.out.println("2. BOOK A CHECK-IN WITH THE DENTIST (Must find dentist first)");
+        System.out.println("3. CALCULATE THE PRICE OF AN APPOINTMENT");
+        System.out.println("4. CONDUCT A CORONA VIRUS PATIENT SCREENING QUESTIONNAIRE AND GET INSTANT RESULTS");
+        System.out.println("5. REGISTER A PATIENT");
+        System.out.println("6. EXIT");
+
+        System.out.print("\nEnter the number: ");
+        //get the user's choice
+        choice = input.nextInt();
+
+      }
+
+      //if the user chooses to find their dentist, present them with the options
+      if (choice == 1){
+        //uses method overloading
+        dentist = booking();
+        System.out.println("Your local dentist is " + dentist + " :)");
+      }
+      //booking a check-in with a dentist
+      else if (choice == 2){
+        //inform the user if they have not found their local dentist to do so first
+        if (dentist.equals("negative")){
+          System.out.println("It seems like you have not found your dentist yet!");
+        }
+        else{
+          //pass the arraylist times and the name of the dentist to the method to book a check-in
+          //only pass in the name of the dentist by using the substring function
+          System.out.println(booking(dentist.substring(4,dentist.length()), times));
+        }
+      }
+      //calculating the price of an appointment
+      else if (choice == 3){
+        //call the method to calculate the price
+        price();
+      }
+      //method to conduct a corona virus patient screening
+      else if (choice == 4){
+        System.out.println(corona());
+      }
+      //registering a patient into the database
+      else if (choice == 5){
+        //get the first name
+        System.out.println("\nEnter the first name of the patient: ");
+        String first = input.next();
+
+        //get the last name
+        System.out.println("\nEnter the last name of the patient: ");
+        String last = input.next();
+
+        patient(first,last);
+      }
+
+    } while (choice != 6);
+
+    //if the user chooses to exit, conclude the program with a message
+    System.out.println("\nThank you for using LTC Dentist Portal! Goodbye!");
+
+  }
+
+
+
+  //method finds a dentist from an array based on a user's location
+  public static String booking (){
+    
+    Scanner input = new Scanner (System.in);
+
+    //local variables
+    int choice, region = 0;
+
+    //create a 2d array to store the names of different dentists in different locations
+    //there are 4 cities and a varying amount of regions in each city
+    String find [] [] = {{"Dr. Choi", "Dr. Badhwar", "Dr. Sadek"},
+    {"Dr. Piramenthiratheesan", "Dr. James", "Dr. Aravinth"},
+    {"Dr. Abdul", "Dr. Meet", "Dr. Nurse", "Dr. Denim"},
+    {"Dr. Kadery", "Dr. Pathmanathan"}};
+
+    System.out.print("\nWhich city are you located in:\n1. Toronto\n2. Halifax\n3. Montreal\n4. Winnepeg\nEnter the number: ");
+    choice = input.nextInt();
+
+    //ensure the user entered an valid choice
+    while (choice != 1 && choice != 2 && choice != 3 && choice != 4){
+      System.out.println("Invalid Option");
+      System.out.print("\nWhich city are you located in:\n1. Toronto\n2. Halifax\n3. Montreal\n4. Winnepeg\nEnter the number: ");
+      choice = input.nextInt();
+    }
+    
+    switch (choice){
+      case 1:
+        //get the region in Toronto
+        System.out.println("\nWhich region are you located in Toronto: \n1. Durham District\n2. Toronto District\n3. York District\n");
+        System.out.println("Enter the number: ");
+        region = input.nextInt();
+
+        //ensure the user gives a correct option
+        while (region != 1 && region != 2 && region != 3){
+          System.out.println("Invalid Option");
+          //get the region in Toronto
+          System.out.println("\nWhich region are you located in Toronto: \n1. Durham District\n2. Toronto District\n3. York District\n");
+          System.out.println("Enter the number: ");
+          region = input.nextInt();         
+        }
+
+        break;
+      case 2:
+        //get the region in Halifax
+        System.out.println("\nWhich region are you located in Halifax:\n1. Halton Hills District\n2. Niagara District\n3. Peel District\n");
+        System.out.println("Enter the number: ");
+        region = input.nextInt();
+        //ensure the user gives a correct option
+        while (region != 1 && region != 2 && region != 3){
+          System.out.println("Invalid Option");
+          //get the region in Halifax
+          System.out.println("\nWhich region are you located in Halifax:\n1. Halton Hills District\n2. Niagara District\n3. Peel District\n");
+          System.out.println("Enter the number: ");
+          region = input.nextInt();        
+        }
+        break;
+      case 3:
+        //get the region in Montreal
+        System.out.println("\nWhich region are you located in Montreal:\n1. Mills District\n2. Bear District\n3. Baynes District\n4. Knocks District\n");
+        System.out.println("Enter the number: ");
+        region = input.nextInt();
+        //ensure the user gives a correct option
+        while (region != 1 && region != 2 && region != 3 && region != 4){
+          System.out.println("Invalid Option");
+          //get the region in Montreal
+          System.out.println("\nWhich region are you located in Montreal:\n1. Mills District\n2. Bear District\n3. Baynes District\n4. Knocks District\n");
+          System.out.println("Enter the number: ");
+          region = input.nextInt();
+        }
+        break;
+      case 4:
+        //get the region in Winnepeg
+        System.out.println("\nWhich region are you located in Winnepeg:\n1. Johnson District\n2. Sunnyside District\n");
+        System.out.println("Enter the number: ");
+        region = input.nextInt();
+        //ensure the user gives a correct option
+        while (region != 1 && region != 2){
+          System.out.println("Invalid Option");
+          //get the region in Winnepeg
+          System.out.println("\nWhich region are you located in Winnepeg:\n1. Johnson District\n2. Sunnyside District\n");
+          System.out.println("Enter the number: ");
+          region = input.nextInt();
+        }
+        break;
+    }
+    //return the respective doctor from the array to the main method
+    return find [choice-1][region-1];
+  }
+
+
+  
+
+  //method books a check-in appointment with a specified dentist at an available time
+  public static String booking (String nurse, ArrayList<String> times){
+
+    Scanner input = new Scanner (System.in);
+
+    String time;
+
+    //book an appointment with the doctor
+    System.out.print("\nEnter the last name of your dentist: Dr. ");
+    String doc = input.next();
+
+    while (!doc.equalsIgnoreCase(nurse)){
+      //book an appointment with the doctor
+      System.out.println("\nThe dentist you entered does not match your local dentist!");
+      System.out.print("\nEnter the last name of your dentist: Dr. ");
+      doc = input.next();
+    }
+
+
+    if (times.size() == 0){
+      time = "\nThere are no times available for a check-in at this time.";
+    }
+
+    else{
+    
+      System.out.println("\nTimes available: \n");
+    
+      for (int i = 0; i < times.size();i ++){
+        System.out.println(times.get(i));
+      }
+      
+      //get the time the user would like to book the check-in
+      System.out.print("\nEnter the time you would like to book an appointment: ");
+      time = input.next();
+
+      //ensure the user enters an available time
+      while (!times.contains(time)){
+        System.out.println("\nThat is not an option!");
+        //get the time the user would like to book the check-in
+        System.out.print("\nEnter the time you would like to book an appointment: ");
+        time = input.next();
+      }
+      //remove the time from the array list so the same time is not re-booked
+      times.remove(time);
+      time = "\nYour appointment at " + time + " has been booked";
+    }
+
+    //return the time of the appointment or indicate if there are no times left
+    return time;
+
+  }
+
+  public static void price (){
+    
+    Scanner input = new Scanner (System.in);
+    NumberFormat money = NumberFormat.getCurrencyInstance();
+
+    //variables
+    String list = "", pass = "N";
+    int complicated = 0, simple = 0, total = 0;
+
+    //greet the user to the program
+    System.out.println("\n~~~CALCULATE THE PRICE OF YOUR APPOINTMENT~~~\n");
+
+    //ask the user if they are a child or adult
+    System.out.println("Enter your age: ");
+    int age = input.nextInt();
+
+    //ensure they enter an appropriate age value
+    while (age < 0 || age > 100){
+      System.out.println("Age must be between 0 and 100!");
+
+      //ask the user if they are a child or adult
+      System.out.print("\nEnter your age: ");
+      age = input.nextInt();
+
+    }
+
+    //if the user is an adult add it to the receipt
+    if (age > 12){
+      list += "ADULT DENTAL EXAM \t\t\t $133";
+      total += 133;
+    }
+    //if the user is a child, add the child fee to the receipt
+    else {
+      list += "CHILD DENTAL EXAM \t\t\t $67";
+      total += 67;
+    }
+
+    //ask the user if they are getting a tooth removed
+    System.out.print("\nAre you getting a tooth extracted (Y/N): ");
+    String tooth = input.next();
+
+    //ensure the user enters yes or no
+    while (!tooth.equalsIgnoreCase("Y") && !tooth.equalsIgnoreCase("N")){
+      System.out.println("Invalid Input");
+      //ask the user if they are getting a tooth removed
+      System.out.print("\nAre you getting a tooth extracted (Y/N): ");
+      tooth = input.next();
+    }
+
+    //if they are getting a tooth extracted, ask if they are getting a molar extracted
+    if (tooth.equalsIgnoreCase("Y")){
+
+      //loop allows user to register multiple teeth
+      do {  
+        
+        //ask the user if they are getting a molar tooth removed
+        System.out.print("\nAre you getting a molar tooth extracted (Y/N): ");
+        String molar = input.next();
+
+        //ensure the user enters yes or no
+        while (!molar.equalsIgnoreCase("Y") && !molar.equalsIgnoreCase("N")){
+          System.out.println("Invalid Input");
+          //ask the user if they are getting a tooth removed
+          System.out.print("\nAre you getting a molar tooth extracted (Y/N): ");
+          molar = input.next();
+        }
+
+        //add whether they are getting a molar extracted to the cost and tally
+        if (molar.equalsIgnoreCase("Y")){
+          complicated ++;
+          total += 247;
+        }
+        else {
+          simple ++;
+          total += 160;
+        }
+        
+        //ask the user if they want to register another tooth
+        System.out.print("\nWould you like to register another tooth extraction (Y/N): ");
+        pass = input.next();
+
+        //error checking
+        while (!pass.equalsIgnoreCase("Y") && !pass.equalsIgnoreCase("N")){
+          System.out.println("Invalid Input");
+
+          //ask the user if they want to register another tooth
+          System.out.print("\nWould you like to register another tooth extraction (Y/N): ");
+          pass = input.next();
+        }
+
+      } while (pass.equalsIgnoreCase("Y"));
+
+      //add the total extractions to the list and total for the receipt
+      if (complicated > 0){
+        list += "\nCOMPLICATED TOOTH EXTRACTION x" + complicated + " $" + (247*complicated);
+      }
+      if (simple > 0){
+        list += "\nSIMPLE TOOTH EXTRACTION x" + simple + "  $" + (160*simple);
+      }
+    
+    }
+    //ask the user if they are getting an x-ray
+    System.out.print("\nAre you getting an X-Ray (Y/N): ");
+    String ray = input.next();
+
+    //ensure the user enters yes or no
+    while (!ray.equalsIgnoreCase("Y") && !ray.equalsIgnoreCase("N")){
+      System.out.println("Invalid Input");
+      //ask the user if they are getting an X-Ray
+      System.out.print("\nAre you getting an X-Ray (Y/N): ");
+      ray = input.next();
+    }
+
+    //add whether they are getting an x-ray to the cost and receipt
+    if (ray.equalsIgnoreCase("Y")){
+      list += "\nX-RAY \t\t\t\t\t\t $34";
+      total += 34;
+    }
+
+    System.out.println("\n__________________________________");
+    System.out.println("RECEIPT");
+    System.out.println("____________________________________");
+    System.out.println(list + "\n");
+    System.out.println("____________________________________");
+    System.out.println("TOTAL: \t\t\t\t\t\t$" + total + "\nTAXES: \t\t\t\t\t\t" + money.format(total*0.13) + "\nGRANDTOTAL: \t\t\t\t" + money.format(total*1.13));
+  }
+
+
+
+  //method returns whether the patient may have the corona virus or not
+  public static String corona (){
+
+    Scanner input = new Scanner (System.in);
+
+    //variables
+    String virus;
+
+    System.out.println("\n++++CORONA VIRUS PATIENT SCREENING QUESTIONNAIRE++++");
+
+    //get user input for virus symptoms
+    System.out.print("\nAre you currently experiencing any of these symptoms? \n-Fever and/or chills \n-Cough or barking cough \n-Shortness of breath\n-Decrease or loss of taste or smell\n\nEnter Y or N: ");
+    String symptoms = input.next();
+
+    //error checking
+    while (!symptoms.equalsIgnoreCase("Y") && !symptoms.equalsIgnoreCase("N")){
+      System.out.println("Invalid Input");
+
+      System.out.print("\nAre you currently experiencing any of these symptoms? \n-Fever and/or chills \n-Cough or barking cough \n-Shortness of breath\n-Decrease or loss of taste or smell\n\nEnter Y or N: ");
+      symptoms = input.next();
+
+    }
+
+    //get user input for travel history
+    System.out.print("\nHave you travelled outside Canada in the past 14 days (Y/N): ");
+    String travel = input.next();
+
+    //error checking
+    while (!travel.equalsIgnoreCase("Y") && !travel.equalsIgnoreCase("N")){
+      System.out.println("Invalid Input");
+
+      System.out.print("\nHave you travelled outside Canada in the past 14 days (Y/N): ");
+      travel = input.next();
+    }
+
+    //ask the user if they might have been corona virus exposed
+    System.out.print("\nHave you been in close contact with someone with a probable corona virus positive (Y/N): ");
+    String contact = input.next();
+
+    //error checking
+    while (!contact.equalsIgnoreCase("Y") && !contact.equalsIgnoreCase("N")){
+      System.out.println("Invalid Input");
+
+      System.out.print("\nHave you been in close contact with someone with a probable corona virus positive (Y/N): ");
+      contact = input.next();
+    }
+
+    //check to see whether the user has been told by their doctor to isolate
+    System.out.print("\nHave you been told by your doctor to self-isolate (Y/N): ");
+    String isolate = input.next();
+
+    while (!isolate.equalsIgnoreCase("Y") && !isolate.equalsIgnoreCase("N")){
+      System.out.println("Please enter Y or N!");
+
+      //check to see whether the user has been told by their doctor to isolate
+      System.out.print("\nHave you been told by your doctor to self-isolate (Y/N): ");
+      isolate = input.next();
+    }
+
+    //if the patient answered yes to any of the following, do not allow him in the room
+    if (isolate.equalsIgnoreCase("Y") || contact.equalsIgnoreCase("Y") || travel.equalsIgnoreCase("Y") || symptoms.equalsIgnoreCase("Y")){
+      virus = "\n***Do not allow patient into the room. He might have the corona virus.***";
+    }
+    else{
+      virus = "\nThe patient has answered each of the questions correctly. Allow the patient into the room.";
+    }
+    //return whether the patient might have the virus
+    return virus;
+  }
+
+
+
+  //method collects the info for a patient
+  public static void patient (String f, String l){
+
+    Scanner input = new Scanner (System.in);
+
+    //combine the first and last name to get the full name
+    String name = f + " " + l;
+
+    //get the gender of the patient
+    System.out.println("\nEnter the gender " + name + " most identifies with (M/F): ");
+    String gender = input.next();
+
+    //error checking
+    while (!gender.equalsIgnoreCase("M") && !gender.equalsIgnoreCase("F")){
+      System.out.println("Invalid Input");
+
+      //get the gender of the patient
+      System.out.println("\nEnter the gender " + name + " most identifies with (M/F): ");
+      gender = input.next();
+    }
+
+    //get the number of years the patient has been going to the dentist
+    System.out.println("\nEnter the number of years " + name + " has been going to the same dentist: ");
+    int years = input.nextInt();
+
+    while (years <= 0){
+      System.out.println("Invalid Input!");
+
+      //get the number of years the patient has been going to the dentist
+      System.out.println("\nEnter the number of years " + name + " has been going to the same dentist: ");
+      years = input.nextInt();
+    }
+
+    System.out.println("\nPATIENT INFORMATION\nName: " + name + "\nGender: " + gender.toUpperCase() + "\nYears: " + years + "\n\nThe patient has been successfully registered!");
+
+  }
+
+}
