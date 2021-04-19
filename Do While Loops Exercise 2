@@ -1,0 +1,22 @@
+/*Programmer's Name: Abhi Vaishnav
+Date: April 27, 2020
+Purpose: To calculate the sum of the first 30 numbers*/
+
+class Main {
+  public static void main(String[] args) {
+    
+    //declare variables
+    int sum = 0, counter = 1;
+
+    //create a do while loop to add the numbers from 1 to 30
+    do{
+
+      //add the value of the counter to the sum for every iteration
+      sum += counter;
+      counter ++;
+
+    }while (counter <= 30);
+
+    System.out.println("The sum of the first 30 numbers is " + sum);
+  }
+}
