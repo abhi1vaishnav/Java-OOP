@@ -1,0 +1,130 @@
+---- MAIN CLASS ----
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //create 4 objects
+    Checkup c1 = new Checkup();
+    Checkup c2 = new Checkup(1,2,3,5,4);
+    Checkup c3 = new Checkup(5,4,3,2,1);
+    Checkup c4 = new Checkup(9,9,9,76,6);
+    
+    //get the first object info by user input
+    System.out.print("\nEnter the patient number: ");
+    c1.setNumber(input.nextInt());
+
+    System.out.print("\nEnter the systolic blood pressure value: ");
+    c1.setsBp(input.nextInt());
+
+    System.out.print("\nEnter the diastolic blood pressure value: ");
+    c1.setdBp(input.nextInt());
+
+    System.out.print("\nEnter the LDL Cholestrol value: ");
+    c1.setldlCholestrol(input.nextInt());
+
+    System.out.print("\nEnter the HDL Cholestrol value: ");
+    c1.sethdlCholestrol(input.nextInt());
+
+    //output the static references
+    System.out.println("\n" + Checkup.clinic);
+    Checkup.explainRatio();
+
+    //display each patient's info
+    System.out.println("\n\nPatient #1\nNumber: " + c1.getNumber() + "\nDiastolic Blood Pressure: " + c1.getdBp() + "\nSystolic Blood Pressure: " + c1.getsBp() + "\nLDL Cholestrol: " + c1.getldlCholestrol() + "\nHDL Cholestrol: " + c1.gethdlCholestrol() + "\nCholestrol Ratio: " + c1.computeRatio());
+
+    System.out.println("\n\nPatient #2\nNumber: " + c2.getNumber() + "\nDiastolic Blood Pressure: " + c2.getdBp() + "\nSystolic Blood Pressure: " + c2.getsBp() + "\nLDL Cholestrol: " + c2.getldlCholestrol() + "\nHDL Cholestrol: " + c2.gethdlCholestrol() + "\nCholestrol Ratio: " + c2.computeRatio());
+
+    System.out.println("\n\nPatient #3\nNumber: " + c3.getNumber() + "\nDiastolic Blood Pressure: " + c3.getdBp() + "\nSystolic Blood Pressure: " + c3.getsBp() + "\nLDL Cholestrol: " + c3.getldlCholestrol() + "\nHDL Cholestrol: " + c3.gethdlCholestrol() + "\nCholestrol Ratio: " + c3.computeRatio());
+
+    System.out.println("\n\nPatient #4\nNumber: " + c4.getNumber() + "\nDiastolic Blood Pressure: " + c4.getdBp() + "\nSystolic Blood Pressure: " + c4.getsBp() + "\nLDL Cholestrol: " + c4.getldlCholestrol() + "\nHDL Cholestrol: " + c4.gethdlCholestrol() + "\nCholestrol Ratio: " + c4.computeRatio());    
+
+  }
+}
+
+
+
+---- Checkup CLASS ----
+
+public class Checkup{
+
+  //member variables
+  int number, diastolicBp, systolicBp, hdlCholestrol, ldlCholestrol;
+
+  //static variable for the clinic name
+  static final String clinic = "Ajax Medical";
+
+  //constructor and overloading the constructor
+  public Checkup(){
+    number = 0;
+    diastolicBp = 0;
+    systolicBp = 0;
+    hdlCholestrol = 0;
+    ldlCholestrol = 0;
+  }
+
+  public Checkup(int num, int d, int s, int ldl, int hdl){
+    number = num;
+    diastolicBp = d;
+    systolicBp = s;
+    hdlCholestrol = hdl;
+    ldlCholestrol = ldl;
+  }
+
+  //mutator methods
+  public void setNumber(int num){
+    number = num;
+  }
+
+  public void setdBp(int d){
+    diastolicBp = d;
+  }
+
+  public void setsBp(int s){
+    systolicBp = s;
+  }
+
+  public void sethdlCholestrol(int hdl){
+    hdlCholestrol = hdl;
+  }
+
+  public void setldlCholestrol(int ldl){
+    ldlCholestrol = ldl;
+  }
+
+  //accessor methods
+  public int getNumber(){
+    return number;
+  }
+
+  public int getdBp(){
+    return diastolicBp;
+  }
+
+  public int getsBp(){
+    return systolicBp;
+  }
+
+  public int gethdlCholestrol(){
+    return hdlCholestrol;
+  }
+
+  public int getldlCholestrol(){
+    return ldlCholestrol;
+  }
+
+  //method to find the cholestrol level
+  public double computeRatio(){
+    return ldlCholestrol/hdlCholestrol;
+  }
+
+  //static method explains cholestrol
+  public static void explainRatio(){
+    System.out.println("\nLDL Cholestrol is known as good cholestrol.\n\nA cholestrol level of 3.5 or lower is considered optimum.");
+  }
+
+}
+
+
