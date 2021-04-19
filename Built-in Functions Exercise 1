@@ -1,0 +1,50 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 3, 2020
+*Purpose: To generate a random number and tell the user if they won based on the number*/
+
+//import java scanners
+import java.util.*;
+
+class Main {
+	public static void main(String[] args) {
+
+    //create input object
+    Scanner input = new Scanner(System.in);
+    
+    //create random object
+    Random r = new Random();
+
+    //declare variables for keeping track of wins and losses
+    int win = 0, lose = 0;
+    //declare variables for the user's choice
+    String choice;
+
+    //create a do while loop for the user to run the program as many times as they desire
+    do{
+      //generate a random number between 0 and 50
+      int lot = r.nextInt(51);
+      System.out.println("The number is " + lot);
+      //create an if statement to determine if the user wins
+      if (lot <= 25){
+        //if the number is less than 26, they win
+        System.out.println("Congratulations! You have won!");
+        //add one to the win total
+        win ++;
+      }
+      else {
+        //if the number is not less than 26 they lose
+        System.out.println("You have lost:(");
+        //add one to the loss total
+        lose ++;
+      }
+      //ask the user if they want to continue
+      System.out.println("Would you like for the program to continue?(Y/N)");
+      choice = input.next();
+    }while (!choice.equalsIgnoreCase("N"));
+
+    //output the win and loss total
+    System.out.println("\nWin Total: " + win);
+    System.out.println("Loss Total: " + lose);
+	}      
+}
+
