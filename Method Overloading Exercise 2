@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //variables
+    int expenseChoice, ticketChoice;
+    double total;
+
+    //display the expenses options to the user
+    System.out.println("\nEnter the number: \n1. Enter each of the expense totals\n2. Only enter the cost of the DJ and decorations");
+    //get the number
+    expenseChoice = input.nextInt();
+
+    //if statement chooses the right method depending on the user's choice
+    if (expenseChoice == 1){
+      //call the method in which the user inputs the price of each expense
+      total = promExpenses();
+    }
+    else {
+      //call the method and input a price for the combined cost of the food and hall rental
+      total = promExpenses(550);
+    }
+
+    //output the ticket money calculation options
+    System.out.println("\nDo you want to calculate: \n1. Ticket Prices \n2. Profit/deficit");
+    //get the choice of the user
+    ticketChoice = input.nextInt();
+
+    //get the number of tickets expected to be sold
+    System.out.println("\nHow many prom tickets are expected to be sold: ");
+    double tickets = input.nextDouble();
+
+    //first statement calculates the break even ticket price
+    if (ticketChoice == 1){
+      //call the method and input the number of students attending prom
+      promTickets(total, tickets);
+    }
+    //else calculates the profit/deficit
+    else{
+      //get the number of price of each ticket from user input
+      System.out.print("\nEnter the set ticket price: $");
+      double price = input.nextDouble();
+      //call the method and input the ticket price, cost and number of students attending prom
+      promTickets(price,total,tickets);
+    }
+
+  }
+
+  //method gets the each of the expense totals
+  public static double promExpenses(){
+
+    Scanner input = new Scanner (System.in);
+    //get the costs for the food, hall rental, DJ and decorations
+    System.out.print("\nEnter the cost of the food: $");
+    double food = input.nextDouble();
+
+    System.out.print("\nEnter the cost to rent the hall: $");
+    double hall = input.nextDouble();
+
+    System.out.print("\nEnter the cost of the DJ: $");
+    double dj = input.nextDouble();
+
+    System.out.print("\nEnter the cost of the decorations: $");
+    double decorations = input.nextDouble();
+    //calculate the cost by adding the expenses and multiplying by the tax
+    double total = (food+hall+dj+decorations)*1.13;
+    //return the cost to the main method
+    return total;
+
+  }
+
+  //this alternative method only gets the cost of the dj and decorations
+  public static double promExpenses (double cost){
+    
+    Scanner input = new Scanner (System.in);
+
+    //get the cost of the DJ
+    System.out.print("\nEnter the cost of the DJ: $");
+    double dj = input.nextDouble();
+
+    //get the cost of the decorations
+    System.out.print("\nEnter the cost of the decorations: $");
+    double decorations = input.nextDouble();
+    //add together the expenses and tax then return the cost to the main method
+    double total = (cost+dj+decorations)*1.13;
+    
+    return total;
+  }
+
+  //method calculates the break-even price from the number of students attending
+  public static void promTickets(double cost, double students){
+    //the break even price is calculated by dividing the total cost of prom by the number of tickets expected to be sold
+    System.out.println("\nThe ticket price needed to break-even is $" + (cost/students));
+  }
+
+  //alternate method calculates the profit or deficit
+  public static void promTickets(double ticketPrice, double cost, double students){
+    
+    //subtract the product of the ticket price and the tickets sold by the cost
+    double money = ticketPrice*students-cost;
+    //if statement displays the profit, deficit message
+    if (money > 0){
+      System.out.println("\nThe profit made is $" + money);
+    }
+    else if (money == 0){
+      System.out.println("\nYou did not make a profit or incur a deficit");
+    }
+    else{
+      System.out.println("\nYou incurred a deficit of $" + money);
+    }
+  }
+
+}
