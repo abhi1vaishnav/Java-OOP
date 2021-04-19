@@ -1,0 +1,41 @@
+/* Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 6, 2020
+*Purpose: To display the price of an item based on a *character code*/
+
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+
+    //create scanner object to get input from the user
+    Scanner input = new Scanner (System.in);
+
+    //declare char variable for getting the user character code
+    char item;
+
+    //prompt the user to enter the item code
+    System.out.println("Enter the character code of the item you wish to know the price of: ");
+    //get the input from the user in the form of char
+    item = input.next().charAt(0);
+
+    //create an if statement based on the 3 different item possibilities to display the price
+    if (item == 'G'){
+      //the price of item G is $2.99
+      System.out.println("The price of " + item + " is $2.99");
+    }
+    else if (item == 'D'){
+      //the price of item D is $5.99
+      System.out.println("The price of " + item + " is $5.99");
+    }
+    else if (item == 'M'){
+      //the price of item M is $0.99
+      System.out.println("The price of " + item + " is $0.99");
+    }
+    else{
+      //if the user enters an invalid option then output a message
+      System.out.println("That is not an option!");
+    }
+
+  }
+}
