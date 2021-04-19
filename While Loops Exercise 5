@@ -1,0 +1,44 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 21, 2020
+*Purpose: To display the if backup is needed depending on the type of police call*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    String call = "";
+
+    //create a while loop to ensure the person is providing a valid input
+    while (!call.equalsIgnoreCase("Traffic") && !call.equalsIgnoreCase("Criminal") && !call.equalsIgnoreCase("Domestic")){
+
+      //prompt the user to enter the purpose of their call
+      System.out.println("\nEnter the purpose of your call (traffic, criminal or domestic): ");
+      //get the purpose from the user
+      call = input.next();
+
+      if (!call.equalsIgnoreCase("Traffic") && !call.equalsIgnoreCase("Criminal") && !call.equalsIgnoreCase("Domestic")){
+        System.out.println("That is not an option!");
+      }
+      else{
+        System.out.println("");
+      }
+
+
+    }
+
+    //create an if statement to determine whether back-up is needed
+    if (call.equalsIgnoreCase("Traffic")){
+      System.out.println("No backup needed");
+    }
+    else{
+      System.out.println("Call Backup Officers");
+    }
+
+  }
+}
