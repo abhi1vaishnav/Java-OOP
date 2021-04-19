@@ -1,0 +1,54 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 21, 2020
+*Purpose: To calculate and display the average grade of a class based on a particular number of students*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    double average = 0, gradesum = 0;
+    int grade = 0, counter = 1;
+    final int student;
+
+    //prompt the user to enter the number of students in the class
+    System.out.println("Enter the number of students in the class: ");
+    //get the number of students in the class
+    student = input.nextInt();
+
+    while (counter <= student){
+
+      //prompt the user to enter the average
+      System.out.println("Enter the score of student " + counter + ":");
+      //get the average from the user
+      grade = input.nextInt();
+      //create an if statement to ensure the grade is between 0 and 100
+      if (grade <= 100 && grade >= 0){
+      //add the grade to the sum of the grades
+      gradesum += grade;
+      //add 1 to the counter
+      counter++;
+      }
+      else{
+        System.out.println("Enter a grade between 0 and 100!\n");
+      }
+    }
+
+    //calculate the average grade
+    average = gradesum/student;
+    //round the average to two decimal places
+    average = average*100;
+    average = Math.round(average);
+    average = average/100;
+    //remind the user of the number of students in the class
+    System.out.println("\nNumber of students in the class: " + student);
+    //print the average to the user
+    System.out.println("Average Score: " + average + "%");
+
+  }
+}
