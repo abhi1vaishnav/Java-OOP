@@ -1,0 +1,62 @@
+/*Programmer's Name: Abhi Vaishnav
+Date: April 27, 2020
+Purpose: To print the averages of three inputted numbers and the squares*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    int num = 0, num1 = 0, num2= 0, num3 = 0, integer_sum = 0, square_sum = 0;
+    double integer_average = 0, square_average = 0;
+
+  //prompt the user to enter three numbers
+  System.out.println("Enter 3 numbers: ");
+
+    //create a loop to get and store 3 numbers
+    for (int i = 0; i<3; i++){
+
+      //get the numbers
+      num = input.nextInt();
+
+      if (i == 0){
+        //store the first number in a variable
+        num1 += num;
+      }
+      else if (i == 1){
+        //store the second number in a variable
+        num2 += num;
+      }
+      else if (i == 2){
+        //store the third number in a variable
+        num3 += num;
+      }
+      //get the sum of the numbers
+      integer_sum += num;
+      //get the sum of the square of the numbers
+      square_sum += num*num;
+    }
+
+    //output the number and the squares
+    System.out.println("\nNumber\t\tSquare");
+    System.out.println(num1 + "\t\t    " + num1*num1);
+    System.out.println(num2 + "\t\t    " + num2*num2);
+    System.out.println(num3 + "\t\t    " + num3*num3);
+    //calculate the average
+    integer_average = integer_sum/3;
+    //round the average of the numbers to the nearest integer
+    integer_average = Math.round(integer_average);
+    //calculate the average
+    square_average = square_sum/3;
+    //round the average of the squares of the numbers to the nearest integer
+    square_average = Math.round(square_average);
+    //display the average and the square average
+    System.out.println("Average\n" + integer_average + "\t\t   " + square_average);
+
+  }
+}
