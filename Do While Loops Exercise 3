@@ -1,0 +1,19 @@
+/*Programmer's Name: Abhi Vaishnav
+Date: April 27, 2020
+Purpose: To print the numbers from 40 to 10 in backwards order*/
+
+class Main {
+  public static void main(String[] args) {
+    
+    //declare and initialize variable for storing the value of the number which will be printed
+    int num = 40;
+
+    //create a do while loop to print and decrease the value of the number up to 10
+    do{
+      //print the number
+      System.out.println(num);
+      num--;
+    }while (num >= 10);
+
+  }
+}
