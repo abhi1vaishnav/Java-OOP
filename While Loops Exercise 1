@@ -1,0 +1,41 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To display the even numbers from 10 to 24 and all the odd numbers from 15 to 25*/
+
+class Main {
+  public static void main(String[] args) {
+    
+    //declare the variables for the even numbers which starts at 10
+    int counter = 10;
+    //the counter for the odd numbers will start at 15
+    int counter2 = 15;
+
+
+    System.out.println("\nDisplay all the even numbers from 10 to 24: \n");
+    //use a while loop to display the even numbers from 10 to 24
+    while (counter<=24){
+      //if the counter is even, display it, otherwise not
+      if (counter % 2 == 0){
+        System.out.println(counter);
+      }
+      else{
+        System.out.println("");
+      }
+      counter++;
+    }
+
+    System.out.println("\nDisplay all the odd numbers from 15 to 25: \n");
+    //use a while loop to display all odd numbers between 15 and 25
+    while (counter2<=25){
+      //if the counter is even, display it, otherwise not
+      if (counter2 % 2 == 1){
+        System.out.println(counter2);
+      }
+      else{
+        System.out.println("");
+      }
+      counter2++;
+    }
+
+  }
+}
