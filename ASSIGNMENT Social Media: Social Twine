@@ -1,0 +1,238 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: May 11, 2020
+*Purpose: To create a fun and interactive social media platform*/
+
+//import all java scanners to generate a random number and to get user input
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //create random object
+    Random rand = new Random();
+
+    //declare variables
+    String post = "There are no posts yet!", correct_password = "", name, email, location, friend1, friend2, password, password1, correct_pass = "";
+    int age, choice, num_game, profile_choice;
+      
+    //print out the name of the social media platform
+    System.out.println("|~~~~~~WELCOME TO SOCIAL TWINE! THE NEXT GENERATIONAL FORUM~~~~~~|");
+    
+    //the first step is to create a profile
+    System.out.println("|~~~~CREATE YOUR PROFILE~~~~|");
+    
+    //get the user's name
+    System.out.println("Enter your first name: ");
+    name = input.next();
+    
+    //get the user's email
+    System.out.println("Enter your email: ");
+    email = input.next();
+    
+    //get the user's location
+    System.out.println("Enter your location: ");
+    location = input.next();
+
+    //get the user's age
+    System.out.println("Enter your age: ");
+    age = input.nextInt();
+
+    //get the user's first names of their two best friends
+    System.out.println("Enter the names of two best friends (first names only, one per line so press enter after each friend input): ");
+    friend1 = input.next();
+    friend2 = input.next();
+
+    //create a do while loop to ensure the password is the same and meets the 8 character requirement
+    do{
+
+      //get the user to enter a password
+      System.out.println("\nTime to create a password! It must be at least 8 characters. Enter it here: ");
+      password = input.next();
+
+      //get the suer to enter their password again for confirmation
+      System.out.println("Enter the same password again to confirm: ");
+      password1 = input.next();
+
+      //allow the user to continue if the passwords match and it is at least 8 characters long, otherwise have them do the process again
+      if (password.equals(password1) && password.length() >= 8){
+        correct_password = "Y";
+      }
+      else if(password.length() < 8 && !password.equals(password1)){
+        System.out.println("The password is too short and they do not match.");
+      }
+      else if (password.length() < 8){
+        System.out.println("The password is too short");
+      }
+      else if (!password.equals(password1)){
+        System.out.println("The passwords do not match. ");
+      }
+
+    }while (!correct_password.equals("Y"));
+
+    //display a message when the user is done creating their profile
+    System.out.println(":) PROFILE SUCCESSFULLY CREATED (:");
+    
+    //create a loop for the game to run as long as the user does not choose to exit
+    do{
+
+      //output the menu of options to the user
+      System.out.println("\n|~~~~~MAIN MENU~~~~~|\n1... View Profile\n2... Update Profile Information\n3... Create a Post\n4... View Most Recent Post\n5... Play a Game\n6... Exit");
+      
+      //get the user's choice
+      System.out.println("Enter your choice: ");
+      choice = input.nextInt();
+
+      //create a while loop to ensure the user has inputted a correct number
+      while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6){
+
+        //prompt the user to choose an appripriate option
+        System.out.println("That is not an option!");
+
+        //output the menu of options to the user
+        System.out.println("\n|~~~~~MAIN MENU~~~~~|\n1... View Profile\n2... Update Profile Information\n3... Create a Post\n4... View Most Recent Post\n5... Play a Game\n6... Exit");
+        
+        //get the user's choice
+        System.out.println("Enter your choice: ");
+        choice = input.nextInt();
+
+      }
+
+
+      switch(choice)
+      {
+      //display the profile if the choice is 1
+      case 1:
+        System.out.println("\n|~~~~~" + name.toUpperCase() + "'s PROFILE~~~~~|");
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Location: " + location);
+        System.out.println("Age: " + age);
+        //output the friends in alphabetical order
+        if (friend1.compareTo(friend2) > 0){
+          System.out.println("Best Friends: " + friend2 + ", " + friend1);
+        }
+        else{
+          System.out.println("Best Friends: " + friend1 + ", " + friend2);
+        }
+        break;
+      case 2:
+        System.out.println("\n|~~~~~UPDATE PROFILE INFORMATION~~~~~|\n1... Name\n2... Email\n3... Location\n4... Age\n5... Best Friends\n6... Password");
+        
+        //get the user's choice of what they want to update
+        System.out.println("Enter the number of the item you would like to change: ");
+        profile_choice = input.nextInt();
+
+        while (profile_choice != 1 && profile_choice != 2 && profile_choice != 3 && profile_choice != 4 && profile_choice != 5 && profile_choice != 6){
+
+          //prompt the user to choose an appripriate option
+          System.out.println("That is not an option!");
+
+          //output the menu of options to the user
+          System.out.println("\n|~~~~~UPDATE PROFILE INFORMATION~~~~~|\n1... Name\n2... Email\n3... Location\n4... Age\n5... Best Friends\n6... Password");
+          
+          //get the user's choice
+          System.out.println("Enter your choice: ");
+          profile_choice = input.nextInt();
+
+        }
+        
+        switch(profile_choice){
+          case 1:
+            //if the user wants to change the name, get the new name
+            System.out.println("Enter the new first name: ");
+            name = input.next();
+            break;
+          case 2:
+            //if the user wants to change the email, get the new email
+            System.out.println("Enter the new email: ");
+            email = input.next();
+            break;
+          case 3:
+            //if the user wants to change the location, get the new location
+            System.out.println("Enter the new location: ");
+            location = input.next();
+            break;
+          case 4:
+            //if the user wants to change the age, get the new age
+            System.out.println("Enter the new age: ");
+            age = input.nextInt();
+            break;
+          case 5:
+            //if the user wants to enter new best friends, get the names of the two best friends
+            System.out.println("Enter the names of two best friends (first names only, one per line, press enter after each friend input): ");
+            friend1 = input.next();
+            friend2 = input.next();
+            break;
+          case 6:
+            //if the user wants to enter a new password, get the new password ensuring all the requirements are meets
+            do{
+
+              //have the password signal to exit out of the loop reset for every iteration
+              correct_pass = "";
+
+              //get the user to enter their new password
+              System.out.println("\nTime to create a password! It must be at least 8 characters. Enter your new password here: ");
+              password = input.next();
+
+              //get the user to enter their new password again for confirmation
+              System.out.println("Enter the same password to confirm: ");
+              password1 = input.next();
+
+              //allow the user to continue if the passwords match and it is at least 8 characters long, otherwise have them do the process again
+              if (password.equals(password1) && password.length() >= 8){
+                correct_pass = "Y";
+              }
+              else if(password.length() < 8 && !password.equals(password1)){
+                System.out.println("The password is too short and they do not match.");
+              }
+              else if (password.length() < 8){
+                System.out.println("The password is too short");
+              }
+              else if (!password.equals(password1)){
+                System.out.println("The passwords do not match. ");
+              }
+
+            }while (!correct_pass.equals("Y"));
+            break;
+          
+
+        }
+        break;
+      case 3:
+        //allow the user to create a post if their choice is 3
+        System.out.println("Create a post! Enter the post below (press enter when post is complete): ");
+        input.nextLine();
+        post = input.nextLine();
+        break;
+      case 4:
+        //output the user's most recent post
+        System.out.println(post);
+        break;
+      case 5:
+        //create a game for the user to play if they choose this option
+        System.out.println("Bob is a person in Grade 1-12. You get three attempts to guess his grade.");
+        int num = rand.nextInt((12-1)+1)+1;
+        for (int i = 1; i < 4; i++){
+          System.out.println("Attemmpt " + i + ":");
+          num_game = input.nextInt();
+          if (num_game == num){
+            System.out.println("Congratulations! You guessed Bob's grade!");
+            break;
+          }
+          else if (i == 3){
+            System.out.println("You lost! The number was " + num);
+          }
+          else{
+            System.out.println("You guessed wrong. Try Again!");
+          }
+        }
+        break;
+        
+      }
+    }while  (choice != 6);
+    input.close();
+  }
+}
