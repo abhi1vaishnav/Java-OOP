@@ -1,0 +1,700 @@
+//Name: Abhi
+//Date: Sep 28, 2020
+//Assignment: Java Programming Assignment 1
+
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+    
+    //variables
+    String orderName, discount = "N", location, items = "";
+    int order, choice, orderNumber; 
+    double orderPrice, total = 0, grandtotal = 0;
+    
+    //create arrays to store the name and price of each dessert for the three cafe locations
+    String names [][][] = new String [3][3][2];
+    double price [][][] = new double [3][3][2];
+    
+    //greet the user to the dessert online portal
+    System.out.println("WELCOME TO DESSERT EXPLOSION!");
+    
+    
+    //for loops get the names and prices of the items at each cafe location
+    for (int x = 0; x < names.length; x ++){
+      System.out.println("\n-----------------------------");
+      //the first input will be for the Ajax location
+      if (x == 0){
+        System.out.println("AJAX");
+      }
+      else if (x == 1){
+        System.out.println("WHITBY");
+      }
+      else{
+        System.out.println("OSHAWA");
+      }
+      
+      for (int y = 0; y < names[x].length; y ++){
+        System.out.println("-------------------------------");
+        for (int z = 0; z < names[x][y].length; z ++){
+          //iterate through the cakes and the types of cakes
+          if (y == 0){
+            System.out.print("Enter the type of cake #" + (z+1) + ": ");
+            names[x][y][z] = input.next();
+            names[x][y][z] += " Cake";
+            System.out.print("Enter the price of " + names[x][y][z] + ": $");
+            price[x][y][z] = input.nextDouble();
+          }
+          //iterate through the cookies and types of cookies
+          else if(y == 1){
+            System.out.print("Enter the type of cookie #" + (z+1) + ": ");
+            names[x][y][z] = input.next();
+            names[x][y][z] += " Cookie";
+            System.out.print("Enter the price of " + names[x][y][z] + ": $");
+            price[x][y][z] = input.nextDouble();
+          }
+          //iterate through the ice creams and the type of ice creams
+          else if (y == 2){
+            System.out.print("Enter the type of ice cream #" + (z+1) + ": ");
+            names[x][y][z] = input.next();
+            names[x][y][z] += " Ice Cream";
+            System.out.print("Enter the price of " + names[x][y][z] + ": $");
+            price[x][y][z] = input.nextDouble();
+          }
+        }
+      }
+    }
+    
+    //get the location of the cafe
+    System.out.println("\nThis Dessert Explosion is located in: (Ajax, Whitby, Oshawa)");
+    location = input.next();
+    
+    //ensure the user enters an appropriate input
+    while (!location.equalsIgnoreCase("Ajax") && !location.equalsIgnoreCase("Whitby") && !location.equalsIgnoreCase("Oshawa")){
+      
+      System.out.println("\nInvalid Input");
+      
+      System.out.println("\nWhich location is the Dessert Explosion in? (Ajax, Whitby, Oshawa)");
+      location = input.next();
+    }
+    
+    //show the options at Ajax if it is the Ajax location
+    if (location.equalsIgnoreCase("Ajax")){
+      
+      //loop allows the program to run until the cashier checks the day's total
+      do{
+        
+        //display the options to the user
+        System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Items\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+        choice = input.nextInt();
+        
+        //if the user gives an unkown number, make them enter it again
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5){
+          
+          System.out.println("Please enter a number between 1 and 5!");
+          
+          //display the options to the user
+          System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Item\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+          choice = input.nextInt();
+          
+        }
+        
+        switch (choice){
+          //if the user chooses the view the menu, display the menu
+          case 1: 
+            //display the ajax menu options
+            System.out.println("\n|*****AJAX MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println(" " + names[0][0][0] + "\tPrice: $" + price[0][0][0]);
+            System.out.println(" " + names[0][0][1] + "\tPrice: $" + price[0][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println(" " + names[0][1][0] + "\tPrice: $" + price[0][1][0]);
+            System.out.println(" " + names[0][1][1] + "\tPrice: $" + price[0][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println(" " + names[0][2][0] + "\tPrice: $" + price[0][2][0]);
+            System.out.println(" " + names[0][2][1] + "\tPrice: $" + price[0][2][1]);
+            
+            break;
+          
+          //if the user chooses to order an item, display the menu and allow them to make a selection
+          case 2:
+            
+            System.out.println("\n|*****AJAX MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println("1. " + names[0][0][0] + "\tPrice: $" + price[0][0][0]);
+            System.out.println("2. " + names[0][0][1] + "\tPrice: $" + price[0][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println("3. " + names[0][1][0] + "\tPrice: $" + price[0][1][0]);
+            System.out.println("4. " + names[0][1][1] + "\tPrice: $" + price[0][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println("5. " + names[0][2][0] + "\tPrice: $" + price[0][2][0]);
+            System.out.println("6. " + names[0][2][1] + "\tPrice: $" + price[0][2][1]);
+            
+            //get the order of the customer
+            System.out.print("\nEnter the number of the item you would like to purchase: ");
+            order = input.nextInt();
+            
+            //ensure the staff provided the appropriate number
+            while (order != 1 && order != 2 && order != 3 && order != 4 && order != 5 && order != 6){
+              
+              System.out.println("Invalid input!");
+              
+              //display the menu
+              System.out.println("\n|*****AJAX MENU OPTIONS*****|\n");
+            
+              System.out.println("**CAKES**");
+              System.out.println("1. " + names[0][0][0] + "\tPrice: $" + price[0][0][0]);
+              System.out.println("2. " + names[0][0][1] + "\tPrice: $" + price[0][0][1]);
+              
+              System.out.println("**COOKIES**");
+              System.out.println("3. " + names[0][1][0] + "\tPrice: $" + price[0][1][0]);
+              System.out.println("4. " + names[0][1][1] + "\tPrice: $" + price[0][1][1]);
+              
+              System.out.println("**ICE CREAM**");
+              System.out.println("5. " + names[0][2][0] + "\tPrice: $" + price[0][2][0]);
+              System.out.println("6. " + names[0][2][1] + "\tPrice: $" + price[0][2][1]);
+              
+              System.out.print("\nEnter the number of the item you would like to purchase: ");
+              order = input.nextInt();
+            
+            }
+            
+            //if statement matches the name and price of the order of the customer to their respective variables
+            if (order == 1){
+              orderName = names[0][0][0];
+              orderPrice = price[0][0][0];
+            }
+            else if (order == 2){
+              orderName = names[0][0][1];
+              orderPrice = price[0][0][1];
+            }
+            else if (order == 3){
+              orderName = names[0][1][0];
+              orderPrice = price[0][1][0];
+            }
+            else if (order == 4){
+              orderName = names[0][1][1];
+              orderPrice = price[0][1][1];
+            }
+            else if (order == 5){
+              orderName = names[0][2][0];
+              orderPrice = price[0][2][0];
+            }
+            else{
+              orderName = names[0][2][1];
+              orderPrice = price[0][2][1];
+            }
+            
+            //ask the user how many of the item they want to order
+            System.out.println("\nHow many " + orderName + "s would you like to order?");
+            orderNumber = input.nextInt();
+            
+            //ensure they are ordering more than 1 item
+            while (orderNumber <= 0){
+              
+              System.out.println("You must order at least 1 " + orderName);
+              System.out.println("\nHow many " + orderName + "s would you like to order?");
+              orderNumber = input.nextInt();
+              
+            }
+            
+            orderPrice *= orderNumber;
+            total += orderPrice;
+            //add their order to the list to be printed in the receipt
+            items += "\n" + orderName + " x" + Integer.toString(orderNumber) + "\t\t$" + Double.toString(orderPrice);
+            
+            break;
+          
+          //if the user chooses to apply a discount, apply the discount
+          case 3:
+            
+            System.out.println("\n|********DISCOUNT TIME********|");
+            System.out.println("Receive a 10% discount if you are a student or senior!");
+            System.out.println("\nAre you a student or senior citizen? (Y/N)");
+            discount = input.next();
+            
+            //ensure the user enters an appropriate option
+            while (!discount.equalsIgnoreCase("Y") && !discount.equalsIgnoreCase("N")){
+              
+              System.out.println("\nInvalid input!");
+              System.out.println("\nAre you a student or senior citizen? (Y/N)");
+              discount = input.next();
+              
+            }
+            
+            if (discount.equalsIgnoreCase("Y")){
+              System.out.println("\n10% Discount applied :)");
+            }
+            else if (discount.equalsIgnoreCase("N")){
+              System.out.println("\nUnfortunately, you are not eligible for the discount.");
+            }
+            
+            break;
+          
+          //if the user chooses to print the receipt, it is the end of the current customer's transaction  
+          case 4:
+            
+            System.out.println("\n|*********************************|");
+            System.out.println("RECEIPT");
+            System.out.println("|*********************************|");
+            System.out.println(items);
+            System.out.println("*****************************");
+            //display the total price
+            System.out.println("SUBTOTAL: $" + total);
+            System.out.println("**********");
+            
+            //apply the discount if applicable
+            if (discount.equalsIgnoreCase("Y")){
+              total *= 0.9;
+            }
+            
+            System.out.println("TOTAL AFTER DISCOUNT: $" + total);
+            
+            //calculate the total with tax
+            total *= 1.13;
+            
+            System.out.println("GRANDTOTAL: $" + total);
+            System.out.println("****************");
+            grandtotal += total;
+            
+            //reset the discount, subtotal amount and items list
+            total = 0;
+            items = "";
+            discount = "N";
+            break;
+            
+          case 5:
+            //display the daily sales total at Ajax
+            System.out.println("\n|*********************************|");
+            System.out.println("DAILY SALES TOTAL AT " + location.toUpperCase());
+            System.out.println("|*********************************|");
+            System.out.println("YOU MADE $" + grandtotal);
+            break;
+        }
+        
+        
+      }while(choice != 5);
+      
+    }
+    
+    //show the options at Whitby if it is the Whitby location
+    else if (location.equalsIgnoreCase("Whitby")){
+      
+      //loop allows the program to run until the cashier checks the day's total
+      do{
+        
+        //display the options to the user
+        System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Items\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+        choice = input.nextInt();
+        
+        //if the user gives an unkown number, make them enter it again
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5){
+          
+          System.out.println("Please enter a number between 1 and 5!");
+          
+          //display the options to the user
+          System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Item\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+          choice = input.nextInt();
+          
+        }
+        
+        switch (choice){
+          //if the user chooses the view the menu, display the menu
+          case 1: 
+            //display the WHITBY menu options
+            System.out.println("\n|*****WHITBY MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println(names[1][0][0] + "\tPrice: $" + price[1][0][0]);
+            System.out.println(names[1][0][1] + "\tPrice: $" + price[1][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println(names[1][1][0] + "\tPrice: $" + price[1][1][0]);
+            System.out.println(names[1][1][1] + "\tPrice: $" + price[1][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println(names[1][2][0] + "\tPrice: $" + price[1][2][0]);
+            System.out.println(names[1][2][1] + "\tPrice: $" + price[1][2][1]);
+            
+            break;
+          
+          //if the user chooses to order an item, display the menu and allow them to make a selection
+          case 2:
+            
+            System.out.println("\n|*****WHITBY MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println("1. " + names[1][0][0] + "\tPrice: $" + price[1][0][0]);
+            System.out.println("2. " + names[1][0][1] + "\tPrice: $" + price[1][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println("3. " + names[1][1][0] + "\tPrice: $" + price[1][1][0]);
+            System.out.println("4. " + names[1][1][1] + "\tPrice: $" + price[1][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println("5. " + names[1][2][0] + "\tPrice: $" + price[1][2][0]);
+            System.out.println("6. " + names[1][2][1] + "\tPrice: $" + price[1][2][1]);
+            
+            //get the order of the customer
+            System.out.print("\nEnter the number of the item you would like to purchase: ");
+            order = input.nextInt();
+            
+            //ensure the employee inputted a valid option
+            while (order != 1 && order != 2 && order != 3 && order != 4 && order != 5 && order != 6){
+              
+              System.out.println("Invalid input!");
+              
+              
+              System.out.println("\n|*****WHITBY MENU OPTIONS*****|\n");
+            
+              System.out.println("**CAKES**");
+              System.out.println("1. " + names[1][0][0] + "\tPrice: $" + price[1][0][0]);
+              System.out.println("2. " + names[1][0][1] + "\tPrice: $" + price[1][0][1]);
+              System.out.println("**COOKIES**");
+              System.out.println("3. " + names[1][1][0] + "\tPrice: $" + price[1][1][0]);
+              System.out.println("4. " + names[1][1][1] + "\tPrice: $" + price[1][1][1]);
+              System.out.println("**ICE CREAM**");
+              System.out.println("5. " + names[1][2][0] + "\tPrice: $" + price[1][2][0]);
+              System.out.println("6. " + names[1][2][1] + "\tPrice: $" + price[1][2][1]);
+              
+              System.out.print("\nEnter the number of the item you would like to purchase: ");
+              order = input.nextInt();
+            
+            }
+            
+            //if statement matches the name and price of the order of the customer to their respective variables
+            if (order == 1){
+              orderName = names[1][0][0];
+              orderPrice = price[1][0][0];
+            }
+            else if (order == 2){
+              orderName = names[1][0][1];
+              orderPrice = price[1][0][1];
+            }
+            else if (order == 3){
+              orderName = names[1][1][0];
+              orderPrice = price[1][1][0];
+            }
+            else if (order == 4){
+              orderName = names[1][1][1];
+              orderPrice = price[1][1][1];
+            }
+            else if (order == 5){
+              orderName = names[1][2][0];
+              orderPrice = price[1][2][0];
+            }
+            else{
+              orderName = names[1][2][1];
+              orderPrice = price[1][2][1];
+            }
+            
+            //ask the user how many of the item they want to order
+            System.out.println("\nHow many " + orderName + "s would you like to order?");
+            orderNumber = input.nextInt();
+            
+            //ensure they are ordering at least 1 item
+            while (orderNumber <= 0){
+              
+              System.out.println("You must order at least 1 " + orderName);
+              System.out.println("\nHow many " + orderName + "s would you like to order?");
+              orderNumber = input.nextInt();
+              
+            }
+            
+            orderPrice *= orderNumber;
+            
+            total += orderPrice;
+            
+            //add their order to the list to be printed in the receipt
+            items += "\n" + orderName + " x" + Integer.toString(orderNumber) + "\t\t$" + Double.toString(orderPrice);
+            
+            break;
+          
+          //if the user chooses to apply a discount, apply the discount
+          case 3:
+            
+            System.out.println("\n|********DISCOUNT TIME********|");
+            System.out.println("Receive a 10% discount if you are a student or senior!");
+            System.out.println("\nAre you a student or senior citizen? (Y/N)");
+            discount = input.next();
+            
+            //ensure the user enters an appropriate option
+            while (!discount.equalsIgnoreCase("Y") && !discount.equalsIgnoreCase("N")){
+              
+              System.out.println("\nInvalid input!");
+              System.out.println("\nAre you a student or senior citizen? (Y/N)");
+              discount = input.next();
+              
+            }
+            
+            if (discount.equalsIgnoreCase("Y")){
+              System.out.println("\n10% Discount applied :)");
+            }
+            else if (discount.equalsIgnoreCase("N")){
+              System.out.println("\nUnfortunately, you are not eligible for the discount.");
+            }
+            
+            break;
+          
+          //if the user chooses to print the receipt, it is the end of the current customer's transaction  
+          case 4:
+            
+            System.out.println("\n|*********************************|");
+            System.out.println("RECEIPT");
+            System.out.println("|*********************************|");
+            System.out.println(items);
+            System.out.println("*****************************");
+            //display the total price
+            System.out.println("SUBTOTAL: $" + total);
+            System.out.println("**********");
+            
+            //apply and display the price with the discount if applicable
+            if (discount.equalsIgnoreCase("Y")){
+              total *= 0.9;
+            }
+            
+            System.out.println("TOTAL AFTER DISCOUNT: $" + total);
+            
+            //calculate the total with tax
+            total *= 1.13;
+            
+            System.out.println("GRANDTOTAL: $" + total);
+            System.out.println("****************");
+            //add the customer's total to the grand total which is to be displayed in the daily sales total
+            grandtotal += total;
+            
+            //reset the discount, subtotal amount and items list
+            total = 0;
+            items = "";
+            discount = "N";
+            break;
+            
+          case 5:
+            System.out.println("\n|*********************************|");
+            System.out.println("DAILY SALES TOTAL AT " + location.toUpperCase());
+            System.out.println("|*********************************|");
+            System.out.println("YOU MADE $" + grandtotal);
+            break;
+        }
+        
+        
+      }while(choice != 5);
+      
+    }
+    
+    //show the options at Oshawa if it is the Oshawa location
+    else{
+      
+      //loop allows the program to run until the cashier checks the day's total
+      do{
+        
+        //display the options to the user
+        System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Items\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+        choice = input.nextInt();
+        
+        //if the user gives an unkown number, make them enter it again
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5){
+          
+          System.out.println("Please enter a number between 1 and 5!");
+          
+          //display the options to the user
+          System.out.println("\n|*******MENU*******|\n1. View Menu\n2. Order Item\n3. Apply Discount\n4. Print Receipt\n5. Display Daily Sales Total");
+          choice = input.nextInt();
+          
+        }
+        
+        switch (choice){
+          //if the user chooses the view the menu, display the menu
+          case 1: 
+            //display the OSHAWA menu options
+            System.out.println("\n|*****OSHAWA MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println(names[2][0][0] + "\tPrice: $" + price[2][0][0]);
+            System.out.println(names[2][0][1] + "\tPrice: $" + price[2][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println(names[2][1][0] + "\tPrice: $" + price[2][1][0]);
+            System.out.println(names[2][1][1] + "\tPrice: $" + price[2][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println(names[2][2][0] + "\tPrice: $" + price[2][2][0]);
+            System.out.println(names[2][2][1] + "\tPrice: $" + price[2][2][1]);
+            
+            break;
+          
+          //if the user chooses to order an item, display the menu and allow them to make a selection
+          case 2:
+            
+            System.out.println("\n|*****OSHAWA MENU OPTIONS*****|\n");
+            
+            System.out.println("**CAKES**");
+            System.out.println("1. " + names[2][0][0] + "\tPrice: $" + price[2][0][0]);
+            System.out.println("2. " + names[2][0][1] + "\tPrice: $" + price[2][0][1]);
+            
+            System.out.println("**COOKIES**");
+            System.out.println("3. " + names[2][1][0] + "\tPrice: $" + price[2][1][0]);
+            System.out.println("4. " + names[2][1][1] + "\tPrice: $" + price[2][1][1]);
+            
+            System.out.println("**ICE CREAM**");
+            System.out.println("5. " + names[2][2][0] + "\tPrice: $" + price[2][2][0]);
+            System.out.println("6. " + names[2][2][1] + "\tPrice: $" + price[2][2][1]);
+            
+            //get the order of the customer
+            System.out.print("\nEnter the number of the item you would like to purchase: ");
+            order = input.nextInt();
+            
+            //ensure the staff provided the appropriate number
+            while (order != 1 && order != 2 && order != 3 && order != 4 && order != 5 && order != 6){
+              
+              System.out.println("Invalid input!");
+              
+              System.out.println("\n|*****OSHAWA MENU OPTIONS*****|\n");
+            
+              System.out.println("**CAKES**");
+              System.out.println("1. " + names[2][0][0] + "\tPrice: $" + price[2][0][0]);
+              System.out.println("2. " + names[2][0][1] + "\tPrice: $" + price[2][0][1]);
+              System.out.println("**COOKIES**");
+              System.out.println("3. " + names[2][1][0] + "\tPrice $" + price[2][1][0]);
+              System.out.println("4. " + names[2][1][1] + "\tPrice: $" + price[2][1][1]);
+              System.out.println("**ICE CREAM**");
+              System.out.println("5. " + names[2][2][0] + "\tPrice: $" + price[2][2][0]);
+              System.out.println("6. " + names[2][2][1] + "\tPrice: $" + price[2][2][1]);
+              
+              System.out.print("\nEnter the number of the item you would like to purchase: ");
+              order = input.nextInt();
+            
+              
+            }
+            
+            //if statement matches the name and price of the order of the customer to their respective variables
+            if (order == 1){
+              orderName = names[2][0][0];
+              orderPrice = price[2][0][0];
+            }
+            else if (order == 2){
+              orderName = names[2][0][1];
+              orderPrice = price[2][0][1];
+            }
+            else if (order == 3){
+              orderName = names[2][1][0];
+              orderPrice = price[2][1][0];
+            }
+            else if (order == 4){
+              orderName = names[2][1][1];
+              orderPrice = price[2][1][1];
+            }
+            else if (order == 5){
+              orderName = names[2][2][0];
+              orderPrice = price[2][2][0];
+            }
+            else{
+              orderName = names[2][2][1];
+              orderPrice = price[2][2][1];
+            }
+            
+            //ask the user how many of the item they want to order
+            System.out.println("\nHow many " + orderName + "s would you like to order?");
+            orderNumber = input.nextInt();
+            
+            //ensure they are ordering more than 1 item
+            while (orderNumber <= 0){
+              
+              System.out.println("You must order at least 1 " + orderName);
+              System.out.println("\nHow many " + orderName + "s would you like to order?");
+              orderNumber = input.nextInt();
+              
+            }
+            
+            orderPrice *= orderNumber;
+            total += orderPrice;
+            
+            //add their order to the list to be printed in the receipt
+            items += "\n" + orderName + " x" + Integer.toString(orderNumber) + "\t\t$" + Double.toString(orderPrice);
+
+            break;
+          
+          //if the user chooses to apply a discount, apply the discount
+          case 3:
+            
+            System.out.println("\n|********DISCOUNT TIME********|");
+            System.out.println("Receive a 10% discount if you are a student or senior!");
+            System.out.println("\nAre you a student or senior citizen? (Y/N)");
+            discount = input.next();
+            
+            //ensure the user enters an appropriate option
+            while (!discount.equalsIgnoreCase("Y") && !discount.equalsIgnoreCase("N")){
+              
+              System.out.println("\nInvalid input!");
+              System.out.println("\nAre you a student or senior citizen? (Y/N)");
+              discount = input.next();
+              
+            }
+            
+            if (discount.equalsIgnoreCase("Y")){
+              System.out.println("\n10% Discount applied :)");
+            }
+            else if (discount.equalsIgnoreCase("N")){
+              System.out.println("\nUnfortunately, you are not eligible for the discount.");
+            }
+            
+            break;
+          
+          //if the user chooses to print the receipt, it is the end of the current customer's transaction  
+          case 4:
+            
+            System.out.println("\n|*********************************|");
+            System.out.println("RECEIPT");
+            System.out.println("|*********************************|");
+            System.out.println(items);
+            System.out.println("*****************************");
+            //display the total price
+            System.out.println("SUBTOTAL: $" + total);
+            System.out.println("**********");
+            
+            //apply the discount if applicable
+            if (discount.equalsIgnoreCase("Y")){
+              total *= 0.9;
+            }
+            
+            System.out.println("TOTAL AFTER DISCOUNT: $" + total);
+            
+            //calculate the total with tax
+            total *= 1.13;
+            
+            System.out.println("GRANDTOTAL: $" + total);
+            System.out.println("******************");
+            grandtotal += total;
+            
+            //reset the subtotal amount and items list
+            total = 0;
+            items = "";
+            discount = "N";
+            
+            break;
+            
+          case 5:
+            //output the daily sales total in a neat format
+            System.out.println("\n|*********************************|");
+            System.out.println("DAILY SALES TOTAL AT " + location.toUpperCase());
+            System.out.println("|*********************************|");
+            System.out.println("YOU MADE $" + grandtotal);
+            break;
+        }
+        
+        
+      }while(choice != 5);
+      
+    }
+    
+    
+  }
+}
