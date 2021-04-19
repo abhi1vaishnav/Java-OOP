@@ -1,3 +1,5 @@
+---- MAIN CLASS ----
+
 //Name: Abhi
 //Date: October 21, 2020
 //Assignment: OOP Exercises
@@ -39,4 +41,61 @@ class Main {
     System.out.println("\nStudent #3\nStudent Number: " + s3.getNumber() + "\nStudent Name: " + s3.getName() + "\nStudent Initial: " + s3.getInitial() + "\nStudent Age: " + s3.getAge() + "\nStudent Average: " + s3.getAverage());
 
   }
+}
+
+
+
+---- STUDENT CLASS ----
+
+
+public class Student{
+
+  //member variables
+  String sir;
+  char initial;
+  int number,age;
+  double average;
+
+  //mutator methods
+  public void setNumber (int n){
+    number = n;
+  }
+  
+  public void setName(String l){
+    sir = l;
+  }
+
+  public void setInitial (char i){
+    initial = i;
+  }
+
+  public void setAge (int a){
+    age = a;
+  }
+
+  public void setAverage(double ag){
+    average = ag;
+  }
+
+  //accessor methods
+  public int getNumber(){
+    return number;
+  }
+  
+  public String getName(){
+    return sir;
+  }
+
+  public char getInitial(){
+    return initial;
+  }
+
+  public int getAge(){
+    return age;
+  }
+
+  public double getAverage(){
+    return average;
+  }
+
 }
