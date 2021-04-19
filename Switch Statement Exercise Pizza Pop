@@ -1,0 +1,60 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 14, 2020
+*Purpose: To calculate and display the cost of pizza and pop*/
+
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare constants for grand total, pizza and pop
+    final int pizza, pop;
+    final double gtotal;
+    //declare variable for price of pizza and pop
+    double pop_price, pizza_price;
+
+    //prompt the user to enter the number of pizzas
+    System.out.println("Enter the number of pizzas: ");
+    //get the number of pizzas
+    pizza = input.nextInt();
+
+    //prompt the user to enter the number of cases of pop
+    System.out.println("Enter the number of cases of pop: ");
+    //get the number of cases of pop the user orders
+    pop = input.nextInt();
+
+    //create a switch statement to calculate the cost based on the number of items ordered
+    switch (pizza){
+      //set the price of pizza to $7 per pizza if they order 10 pizzas
+      case 10:
+        pizza_price = 7*pizza;
+        break;
+      default:
+        //the price of pizza is $8.50 per pizza if they order less than 10 boxes
+        pizza_price = 8.50*pizza;
+        break;
+    }
+    switch (pop){
+      case 5:
+        //set the price of pop to $6 per case if they order 5 cases of pop
+        pop_price = pop*6;
+        break;
+      default:
+        //set the price of pop to $8 per case if they order less than 5 cases
+        pop_price = pop*8;
+        break;
+    }
+
+    //the total cost is the price of pop + pizza
+    gtotal = pop_price + pizza_price;
+
+    System.out.println("Price of pizza: $" + pizza_price);
+    System.out.println("Price of pop: $" + pop_price);
+    System.out.println("Grand Total: $" + gtotal);
+
+  }
+}
