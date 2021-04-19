@@ -1,0 +1,27 @@
+//import scanner class
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+        //create scanner object to get the names of the friends
+        Scanner keyedInput = new Scanner (System.in);
+        //create an array of 5 different friends
+        String [ ] friends = new String [5];
+        //prompt the user to enter the name of 5 friends
+        System.out.println("Enter the names of ten friends:");
+        //for loop gets the names of the friends without needing 5 lines of code for each individual friend,index starts at 0 and ends at 4
+        for (int i = 0; i <= 4; i ++)
+        {
+            //get the names of the friends
+            friends[i] = keyedInput.nextLine();
+        }
+        //tell the user which friends' names are being listed
+        System.out.println("The second, third and fourth names listed were:");
+        //output the second name of the friend at index 1
+        System.out.println("Second: " + friends[1]);
+        //output the third name of the friend
+        System.out.println("Third: " + friends[2]);
+        //output the fourth name of the friend
+        System.out.println("Fourth: " + friends[3]);
+  }
+}
