@@ -1,0 +1,90 @@
+class Main {
+  public static void main(String[] args) {
+    
+    //create 5 circle objects
+    Circle c1 = new Circle();
+    Circle c2 = new Circle();
+
+    //set the parameters of these objects
+    Circle c3 = new Circle(90, "Red","White");
+    Circle c4 = new Circle(80,"Blue","Maroon");
+    Circle c5 = new Circle(11,"Caramel","Pink");
+
+
+    //use the set methods for the first 2 objects
+    c1.setRadius(14);
+    c1.setBorder("Green");
+    c1.setInner("Turquoise");
+
+    c2.setRadius(47);
+    c2.setBorder("Yellow");
+    c2.setInner("Purple");
+
+    //output the diameter for each of the circles
+    System.out.println("\nCircle 1\nRadius: " + c1.getRadius() + "\nBorder Colour: " + c1.getBorder() + "\nInner Colour: " + c1.getInner() + "\nThe diameter for the first object is " + c1.diameter(c1.getRadius()));
+
+    System.out.println("\nCircle 2\nRadius: " + c2.getRadius() + "\nBorder Colour: " + c2.getBorder() + "\nInner Colour: " + c2.getInner() + "\nThe diameter for the second object is " + c2.diameter(c2.getRadius()));
+
+    System.out.println("\n\nCircle 3\nRadius: " + c3.getRadius() + "\nBorder Colour: " + c3.getBorder() + "\nInner Colour: " + c3.getInner() + "\nThe diameter for the third object is " + c3.diameter(c3.getRadius()));
+
+    System.out.println("\n\nCircle 4\nRadius: " + c4.getRadius() + "\nBorder Colour: " + c4.getBorder() + "\nInner Colour: " + c4.getInner() + "\nThe diameter for the fourth object is " + c4.diameter(c4.getRadius()));
+    
+    System.out.println("\n\nCircle 5\nRadius: " + c5.getRadius() + "\nBorder Colour: " + c5.getBorder() + "\nInner Colour: " + c5.getInner() + "\nThe diameter for the fifth object is " + c5.diameter(c5.getRadius()));
+
+  }
+}
+
+
+
+public class Circle{
+
+  //member variables
+  double radius;
+  String borderColour, innerColour;
+
+  //constructor method
+  public Circle (){
+    radius = 0;
+    borderColour = "white";
+    innerColour = "black";
+  }
+
+  //constructor method overloading
+  public Circle(double r, String b, String i){
+    radius = r;
+    borderColour = b;
+    innerColour = i;
+  }
+
+  //mutator methods
+  public void setRadius(double r){
+    radius = r;
+  }
+
+  public void setBorder(String b){
+    borderColour = b;
+  }
+
+  public void setInner(String i){
+    innerColour = i;
+  }
+
+  //accessor methods
+  public double getRadius(){
+    return radius;
+  }
+
+  public String getBorder(){
+    return borderColour;
+  }
+
+  public String getInner(){
+    return innerColour;
+  }
+
+  //create a methods to calculate and return the diameter
+  public double diameter(double r){
+    return r*2;
+  }
+
+}
