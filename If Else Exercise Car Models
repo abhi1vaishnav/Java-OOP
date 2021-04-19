@@ -1,0 +1,43 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 6, 2020
+*Purpose: To display the model and company from a car *code*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variable for storing car model code
+    String car;
+
+    //prompt the user to enter the car model
+    System.out.println("Enter the car model code: ");
+    car = input.next();
+
+    //create an if statement to display the model and company depending upon the car model code entered by the user
+    if (car .equals ("EX")){
+      System.out.println("Model Name: Expedition");
+      System.out.println("Company Name: Ford");
+    }
+    else if (car.equals("EP")){
+      System.out.println("Model Name: Explorer");
+      System.out.println("Company Name: Ford");
+    }
+    else if (car.equals("MDX")){
+      System.out.println("Model Name: Acura MDX");
+      System.out.println("Company Name: Acura");
+    }
+    else if (car.equals("TL")){
+      System.out.println("Model Name: Acura 3.2TL");
+      System.out.println("Company Name: Acura");
+    }
+    else {
+      //if the code is not recognized prompt user
+      System.out.println("Invalid Car Model Code");
+    }
+  }
+}
