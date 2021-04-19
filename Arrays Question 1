@@ -1,0 +1,31 @@
+/*Programmer's Name: Abhi
+*Date Last Modified: June 1, 2020
+*Purpose: To get and display the names of 5 schools in durham region*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare array called school of length 5
+    String school[] = new String [5];
+
+    //create a for loop to get the name of the school
+    for (int i = 0; i < 5; i ++){
+      System.out.println("Enter the name of the school which is in Durham: ");
+      school[i] = input.nextLine();
+    }
+
+    //output the schools to the user using a for loop
+    System.out.println("Schools In The Durham Region ");
+    for (int i = 0; i < 5; i ++){
+      System.out.println(school[i]);
+    }
+
+
+  }
+}
