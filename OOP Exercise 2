@@ -1,0 +1,42 @@
+//Name: Abhi
+//Date: October 21, 2020
+//Assignment: OOP Exercises
+
+class Main {
+  public static void main(String[] args) {
+    
+    //instantiate 3 student objects
+    Student s1 = new Student();
+    Student s2 = new Student();
+    Student s3 = new Student();
+
+    //set the first student's info
+    s1.setNumber(119);
+    s1.setName("Soni");
+    s1.setInitial('V');
+    s1.setAge(19);
+    s1.setAverage(90.8);
+
+    //set the second student info
+    s2.setNumber(778);
+    s2.setName("Caruso");
+    s2.setInitial('A');
+    s2.setAge(24);
+    s2.setAverage(76.1);
+
+    //set the third student's info
+    s3.setNumber(77);
+    s3.setName("Green");
+    s3.setInitial('D');
+    s3.setAge(14);
+    s3.setAverage(53.7);
+
+    //output the students info
+    System.out.println("\nStudent #1\nStudent Number: " + s1.getNumber() + "\nStudent Name: " + s1.getName() + "\nStudent Initial: " + s1.getInitial() + "\nStudent Age: " + s1.getAge() + "\nStudent Average: " + s1.getAverage());
+
+    System.out.println("\nStudent #2\nStudent Number: " + s2.getNumber() + "\nStudent Name: " + s2.getName() + "\nStudent Initial: " + s2.getInitial() + "\nStudent Age: " + s2.getAge() + "\nStudent Average: " + s2.getAverage());
+
+    System.out.println("\nStudent #3\nStudent Number: " + s3.getNumber() + "\nStudent Name: " + s3.getName() + "\nStudent Initial: " + s3.getInitial() + "\nStudent Age: " + s3.getAge() + "\nStudent Average: " + s3.getAverage());
+
+  }
+}
