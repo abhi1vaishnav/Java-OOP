@@ -1,0 +1,42 @@
+/*Programmer's Name: Abhi
+*Date Last Modified: June 1, 2020
+*Purpose: To get the sales of 10 salesmen*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner(System.in);
+
+    //declare variables
+    String special = "", sale = "";
+    int sum = 0;
+
+    //create an array of length 10
+    int sales [] = new int [10];
+
+    //create a for loop to get the sales of 10 salesmen
+    for (int i = 0; i < 10; i ++){
+      System.out.println("Enter the sales amount for salesmen #" + (i+1) + ":");
+      sales[i] = input.nextInt();
+      sum += sales[i];
+      if (sales[i] >= 5000){
+        special += "\n" + (i+1);
+        sale += "\n$" + sales[i];
+      }
+    }
+
+
+    System.out.println("\nReport #1\nAll Salespersons\nSalesmen Number\tSales Amount");
+    //create another for loop to display the sales of all salesmen
+    for (int i = 0; i < 10; i ++){
+      System.out.println((i + 1) + "\t\t\t\t$" + sales[i]);
+    }
+    System.out.println("\nOverall Total: $" + sum);
+    System.out.println("\nReport #2\nThose over $5000\nSalesman Number" + special);
+    System.out.println("\nSales Amount" + sale);
+  }
+}
