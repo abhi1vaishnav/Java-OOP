@@ -1,0 +1,21 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 20, 2020
+*Purpose: To display the even numbers from 100 to 150 using a for loop*/
+
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create a for statement to display all the numbers from 100 to 150
+    for (int i=100; i<=150;i++){
+      //create an if statement to filter and print only the even numbers by checking if there is a remainder when dividing by 2
+      if (i%2==0){
+        System.out.print(i + "\n");
+      }
+      else {
+        System.out.print("");
+      }
+    }
+
+  }
+}
