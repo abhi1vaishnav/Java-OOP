@@ -1,0 +1,49 @@
+/*Programmer's Name: Abhi Vaishnav
+*Date Last Modified: April 21, 2020
+*Purpose: To display the ages of children in age groups*/
+
+//import java scanner
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create scanner object
+    Scanner input = new Scanner (System.in);
+
+    //declare variables
+    int counter = 0, age, group1 = 0, group2 = 0, group3 = 0;
+
+    //create while loop to get the ages and categorize each one
+    while (counter < 10){
+
+      //prompt the user to enter their age
+      System.out.println("\nEnter the age: ");
+      //get the age from the user
+      age = input.nextInt();
+
+      //create an if statement to group the ages accordingly
+      if (age > 18){
+        group1++;
+      }
+      else if (age > 15){
+        group2++;
+      }
+      else if (age > 12){
+        group3++;
+      }
+      else{
+      }
+
+      counter++;
+
+    }
+
+    //display the groupings to the user
+    System.out.println("\nAge Group\tNumber of Students");
+    System.out.println("13-15\t\t" + group3);
+    System.out.println("16-18\t\t" + group2);
+    System.out.println("Above 18\t" + group1);
+
+  }
+}
