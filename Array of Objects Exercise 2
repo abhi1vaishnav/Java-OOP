@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+  
+    //create six objects of the class
+    Prom p[] = new Prom[6];
+
+    //loop instantiates and gets user input for the various fields
+    for (int i = 3; i < p.length; i ++){
+      p[i] = new Prom();
+
+      //get the name
+      System.out.print("Enter the name: ");
+      p[i].setName(input.next());
+
+      //get the ticket number
+      System.out.print("Enter the ticket number: ");
+      p[i].setTicketNumber(input.nextInt());
+
+      //get whether they are a guest of a student
+      System.out.print("Are you a guest of a student (Y/N): ");
+      p[i].setGuest(input.next().charAt(0));
+    }
+
+    //instantiate three objects
+    p[0] = new Prom("Hubert", 3003, 'N');
+    p[1] = new Prom("Matt", 3001, 'Y');
+    p[2] = new Prom("Nina", 3002, 'N');
+
+    //display all objects
+    System.out.println("\n\nGuest #\tName\tTicket");
+    //loop diaplays the information for all objects
+    for (int i = 0; i < p.length; i ++){
+      System.out.println((i+1) + "\t\t" + p[i].getName() + "\t" + p[i].getTicketNumber());
+    }
+    
+    System.out.println("\n\nGuests of students attending our school: \nTICKET NUMBER\tNAME");
+    //loop displays only the guests who answered yes to the question
+    for (int i = 0; i < p.length; i ++){
+      if (p[i].getGuest() == 'Y'){
+        System.out.println(p[i].getTicketNumber() + "\t\t\t" + p[i].getName());
+      }
+    }
+
+  }
+}
+
+
+public class Prom{
+
+  //member variables
+  String name;
+  int ticketNumber;
+  char guest;
+  
+  //default
+  public Prom(){
+  }
+
+  //overloaded constructor
+  public Prom(String n, int t, char g){
+    name = n;
+    ticketNumber = t;
+    guest = g;
+  }
+
+  //mutator methods
+  public void setName (String n){
+    name = n;
+  }
+
+  public void setTicketNumber(int t){
+    ticketNumber = t;
+  }
+
+  public void setGuest(char g){
+    guest = g;
+  }
+
+  //accessor methods
+  public String getName(){
+    return name;
+  }
+
+  public int getTicketNumber(){
+    return ticketNumber;
+  }
+
+  public char getGuest(){
+    return guest;
+  }
+
+}
