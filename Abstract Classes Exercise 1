@@ -1,0 +1,113 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner (System.in);
+  
+    //create an array of 5 objects for bmw and honda
+    Honda h[] = new Honda[5];
+    BMW b[] = new BMW[5];
+
+    //initialize the first array with the default constructor
+    for (int i = 0; i < h.length; i ++){
+      h[i] = new Honda();
+      //get user input for the model to fill the array of objects
+      System.out.print("\nEnter the model: ");
+      h[i].setModel(input.next());
+      //get the price
+      System.out.print("\nEnter the price: $");
+      h[i].setPrice(input.nextDouble());
+    }
+
+    //use the overloaded constructor for the next array of objects
+    b[0] = new BMW("Q3",45960.69);
+    b[1] = new BMW("Verghucci",61050.75);
+    b[2] = new BMW("Dalton",50690.97);
+    b[3] = new BMW("Fast",127680.99);
+    b[4] = new BMW("Ultron",81217.99);
+
+    //neatly output the data for both arrays of objects using a for loop
+    for (int i = 0; i < h.length; i ++){
+      System.out.println("\nHonda Car #" + (i+1) + "\nModel: " + h[i].getModel() + "\nPrice: " + h[i].getPrice());
+    }
+
+    for (int i = 0; i < b.length; i ++){
+      System.out.println("\nBMW Car #" + (i+1) + "\nModel: " + b[i].getModel() + "\nPrice: " + b[i].getPrice());
+    }
+  }
+}
+
+
+import java.text.NumberFormat;
+
+//abstract no objects are being made
+public abstract class Auto {
+  NumberFormat money = NumberFormat.getCurrencyInstance();
+
+  //member variables
+  String model;
+  double price;
+
+  //mutator methods
+  public void setModel(String m){
+    model = m;
+  }
+
+  //abstract because each subclass will have a different price
+  public abstract void setPrice(double p);
+
+  //accessor methods
+  public String getModel(){
+    return model;
+  }
+
+  public String getPrice(){
+    return money.format(price);
+  }
+
+}
+
+
+//extend from the auto class to discount the price
+public class BMW extends Auto{
+
+  //constructors
+  public BMW(){
+
+  }
+
+  public BMW(String m, double p){
+    model = m;
+    //discount 5% for the annual sale
+    price = 0.95*p;
+  }
+
+  //discount the price for the annual sale in the mutator method
+  public void setPrice(double p){
+    price = p;
+    price *= 0.95;
+  }
+
+}
+
+
+//add a delivery fee by inheriting the auto class
+public class Honda extends Auto {
+
+  //constructors
+  public Honda (){
+
+  }
+
+  public Honda(String m, double p){
+    model = m;
+    price = p;
+  }
+
+  //add a delivery fee for each honda automobile
+  public void setPrice(double p){
+    price = p;
+    price *= 1.02;
+  }
+
+}
