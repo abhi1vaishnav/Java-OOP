@@ -1,0 +1,110 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+    //create an object of each class
+    ShippingPrice s1 = new ShippingPrice();
+    Order o1 = new Order();
+
+    //get user input for each of the fields
+    System.out.print("\nEnter the customer's first name: ");
+    o1.setName(input.next());
+
+    System.out.print("\nEnter the customer number: ");
+    o1.setNumber(input.nextInt());
+
+    System.out.print("\nEnter the quantity of the item: ");
+    o1.setQuantity(input.nextInt());
+
+    //set the fields
+    s1.setName("Caetelin");
+    s1.setNumber(573);
+    s1.setQuantity(3);
+
+    //display the data including the prices
+    System.out.println("\n\nCustomer #1\nName: " + o1.getName() + "\nNumber: " + o1.getNumber() + "\nQuantity: " + o1.getQuantity() + "\nPrice: $" + o1.computePrice());
+
+    System.out.println("\nCustomer #2\nName: " + s1.getName() + "\nNumber: " + s1.getNumber() + "\nQuantity: " + s1.getQuantity() + "\nPrice: $" + s1.computePrice());
+
+  }
+}
+
+
+
+import java.text.NumberFormat;
+
+//parent super class
+public class Order{
+
+  NumberFormat money = NumberFormat.getCurrencyInstance();
+
+  //member variables
+  String name;
+  int number, quantity;
+  double price = 0;
+
+  //default constructor
+  public Order(){
+    name = "";
+    number = 0;
+    quantity = 0;
+    price = quantity*100;
+  }
+
+  //overloaded constructor
+  public Order(String n, int num, int q){
+    name = n;
+    number = num;
+    quantity = q;
+    price = q*100;
+  }
+
+  //mutator methods
+  public void setName(String n){
+    name = n;
+  }
+
+  public void setNumber(int n){
+    number = n;
+  }
+
+  public void setQuantity(int q){
+    quantity = q;
+  }
+
+  //accessor methods
+  public String getName(){
+    return name;
+  }
+
+  public int getNumber(){
+    return number;
+  }
+
+  public int getQuantity(){
+    return quantity;
+  }
+
+  //method to calculate the price
+  public double computePrice(){
+    price += quantity*100;
+    //format the price into a money string
+    return price;
+  }
+
+}
+
+
+//subclass or child class
+public class ShippingPrice extends Order{
+
+  public ShippingPrice(){}
+
+  //add a particular cost to each item by overriding the computeprice method
+  public double computePrice(){
+    super.computePrice();
+    price += 0.75*quantity;
+    return price;
+  }
+
+}
