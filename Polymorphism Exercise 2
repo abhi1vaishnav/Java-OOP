@@ -1,0 +1,81 @@
+class Main {
+  public static void main(String[] args) {
+    //create 2 objects of the class
+    Computer c1 = new Computer();
+    MultimediaComputer m1 = new MultimediaComputer();
+
+    //set the computer object
+    c1.setProcessor("AMD");
+    c1.setSpeed(130);
+
+    //set the MultimediaComputer object
+    m1.setProcessor("Intel");
+    m1.setSpeed(141);
+    m1.setGpu(8);
+
+    //display the computers
+    System.out.println("\n\nComputer #1\nProcessor: " + c1.getProcessor() + "\nSpeed: " + c1.getSpeed() + " MHz");
+    System.out.println("\n\nComputer #2\nProcessor: " + m1.getProcessor() + "\nSpeed: " + m1.getSpeed() + " MHz\nGPU Speed: " + m1.getGpu() + " MHz");
+
+  }
+}
+
+
+public class Computer{
+
+  //member variables
+  String processor;
+  int speed;
+
+  //default constructor
+  public Computer(){}
+
+  public Computer(String p, int s){
+    processor = p;
+    speed = s;
+  }
+
+  //mutator methods
+  public void setProcessor (String p){
+    processor = p;
+  }
+
+  public void setSpeed(int s){
+    speed = s;
+  }
+
+  //accessor methods
+  public String getProcessor(){
+    return processor;
+  }
+
+  public int getSpeed(){
+    return speed;
+  }
+
+}
+
+
+//extend the computer class
+public class MultimediaComputer extends Computer {
+
+  //member variable
+  int gpu;
+
+  public MultimediaComputer(){}
+
+  public MultimediaComputer(String p, int s, int g){
+    processor = p;
+    speed = s;
+    gpu = g;
+  }
+
+  public void setGpu(int g){
+    gpu = g;
+  }
+
+  public int getGpu(){
+    return gpu;
+  }
+
+}
