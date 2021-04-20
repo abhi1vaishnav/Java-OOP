@@ -1,0 +1,88 @@
+
+
+class Main {
+  public static void main(String[] args) {
+    
+    //create 2 objects for the rectangle and cube
+    Rectangle r1 = new Rectangle();
+    Cube c1 = new Cube();
+
+    //set the height and width of the rectangle
+    r1.setHeight(6);
+    r1.setWidth(19);
+
+    //display and compute the surface area
+    System.out.println("\n\nThe surface area of a rectangle with a height of " + r1.getHeight() + "cm and a width of " + r1.getWidth() + "cm is " + r1.computeSurfaceArea() + "cm^2");
+
+    //set the dimensions of the cube
+    c1.setHeight(6);
+    c1.setWidth(5);
+    c1.setDepth(3);
+
+    //display and compute the surface area for the cube
+    System.out.println("\nThe surface area of a cube with a depth of " + c1.getDepth() + "cm, a height of " + c1.getHeight() + "cm and a width of " + c1.getWidth() + " is " + c1.computeSurfaceArea() + "cm^3");
+
+
+  }
+}
+
+
+//inherit the Rectangle class to add on
+public class Cube extends Rectangle {
+
+  //add another integer variable for depth
+  int depth;
+
+  //mutator method
+  public void setDepth(int d){
+    depth = d;
+  }
+
+  //accessor method
+  public int getDepth(){
+    return depth;
+  }
+
+  //overriding the parent class method
+  public int computeSurfaceArea(){
+    return height*width+height*depth+width*depth;
+  }
+
+}
+
+
+public class Rectangle {
+
+  //member variables
+  int height, width;
+
+  //default constructor
+  public Rectangle(){
+    height = 200;
+    width = 400;
+  }
+
+  //mutator methods
+  public void setHeight(int h){
+    height = h;
+  }
+
+  public void setWidth(int w){
+    width = w;
+  }
+
+  //accessor method
+  public int getHeight(){
+    return height;
+  }
+
+  public int getWidth(){
+    return width;
+  }
+
+  //method for calculating the surface area
+  public int computeSurfaceArea(){
+    return height*width;
+  }
+
+}
