@@ -1,0 +1,107 @@
+import java.util.Scanner;
+import java.text.NumberFormat;
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner (System.in);
+    NumberFormat money = NumberFormat.getCurrencyInstance();
+
+    //create 6 objects
+    Spa s[] = new Spa[6];
+
+    //use a for loop to initialize and get user input for the first three objects
+    for (int i = 0; i < 3; i ++){
+      s[i] = new Spa();
+
+      //get the service
+      System.out.print("\nEnter the service: ");
+      s[i].setService(input.next());
+
+      //get the price of the service
+      System.out.print("\nEnter the price: $");
+      s[i].setPrice(input.nextDouble());
+      
+      //get the wait time
+      System.out.print("\nEnter the wait time (min): ");
+      s[i].setWait(input.nextInt());
+    }
+
+    //use the overloaded constructor for the next objects
+    s[3] = new Spa("Colour",75.69,14);
+    s[4] = new Spa("Fade",23.19,10);
+    s[5] = new Spa("Manicure",55.32,87);
+
+    //print all objects
+    System.out.println("\n\nSERVICE\tPRICE\tWAIT TIME");
+    for (int i = 0; i < s.length; i ++){
+      System.out.println(s[i].getService() + "\t" + money.format(s[i].getPrice()) + "\t" + s[i].getWait());
+    }
+
+    //print all object with a price of over $50
+    System.out.println("\n\nOBJECT WITH PRICES >50\n#\t\tSERVICE\tPRICE\tWAIT TIME");
+    for (int x = 0; x < s.length; x ++){
+      if (s[x].getPrice() > 50){
+        System.out.println((x+1) + "\t\t" + s[x].getService() + "\t" + money.format(s[x].getPrice()) + "\t" + s[x].getWait());
+      }
+    }
+
+    //print the objects with a wait time of half an hour or less
+    System.out.println("\n\nOBJECTS WITH A WAIT TIME OF LESS THAN 30 MINUTES\n#\t\tSERVICE\tPRICE\t\tWAIT TIME");
+
+    for (int y = 0; y < s.length; y ++){
+      if (s[y].getWait() <= 30){
+        System.out.println((y+1) + "\t\t" + s[y].getService() + "\t" + money.format(s[y].getPrice()) + "\t\t" + s[y].getWait());
+      }
+    }
+
+  }
+}
+
+
+public class Spa{
+
+  //member variables
+  String service;
+  double price;
+  int wait;
+
+  //default
+  public Spa(){
+    service = "";
+    price = 0;
+    wait = 0;
+  }
+
+  //overloaded
+  public Spa(String s, double p, int w){
+    service = s;
+    price = p;
+    wait = w;
+  }
+
+  //mutator methods
+  public void setService(String s){
+    service = s;
+  }
+
+  public void setPrice(double p){
+    price = p;
+  }
+
+  public void setWait(int w){
+    wait = w;
+  }
+
+  //accessor methods
+  public String getService(){
+    return service;
+  }
+
+  public double getPrice(){
+    return price;
+  }
+
+  public int getWait(){
+    return wait;
+  }
+
+}
