@@ -1,0 +1,50 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.NumberFormat;
+
+class Main {
+  public static void main(String[] args) {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance();
+    Scanner input = new Scanner (System.in);
+
+    //variables
+    double total = 0;
+    int items = 0;
+
+    while (true){
+      System.out.println("How many items would you like in your cart");
+      try{
+        items = input.nextInt();
+        break;
+      }
+      catch (InputMismatchException e){
+        System.out.println("Bad data type entered.");
+        System.out.println("Please try again\n");
+        String flush = input.next();
+      }
+    }
+      //create an array the size of the number of items
+      double shopping[] = new double[items];
+
+      for (int i = 0; i < shopping.length; i ++){
+        while (true){
+          System.out.print("Enter the price of item #" + (i+1) + ": $");
+          try{
+            shopping[i] = input.nextDouble();
+            break;
+          }
+          catch (InputMismatchException e){
+            System.out.println("Wrong data type");
+            System.out.println("Please try again");
+            String flush = input.next();
+          }
+        }
+        total += shopping[i];
+      }
+
+      System.out.println("\n\nThe total cost is $" + money.format(total));
+
+    
+  }
+}
