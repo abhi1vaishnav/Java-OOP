@@ -1,0 +1,215 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner(System.in);
+
+    //variables
+    String choice;
+    int tally = 0, insurance;
+
+    //create an array of objects of length 10 for health and life insurance using dynamic binding
+    Insurance i[] = new Insurance[10];
+
+    //loop runs until the user chooses to exit
+    do{
+      //ask the user which type of insurance or to exit
+      System.out.print("\n\nDo you want to:\n1. Buy Health Insurance\n2. Buy Life Insurance\n3. Exit\n\nEnter the #: ");
+      insurance = input.nextInt();
+
+      //if they want health insurance, call the methods from the health class
+      if (insurance == 1){
+        //if there are no health objects left, notify the user
+        if (tally >= 10){
+          System.out.println("We don’t have any more space for that type of insurance right now!");
+        }
+        else {
+          System.out.println("\nHealth Insurance");
+          //instantiate the insurance object using the health constructor
+          i[tally] = new Health();
+          //print the info for health insurance
+          i[tally].print();
+          //set the cost and policy to access later on
+          i[tally].setCost();
+          i[tally].setPolicy();
+          //output the cost and policy
+          System.out.println("\nCost: $" + i[tally].getCost() + "/month\nPolicy: " + i[tally].getPolicy());
+          //call the survey method for the user to complete
+          i[tally].survey();
+          //add one to the tally to keep track of the number objects used
+          tally++;
+        }
+      }
+      
+      //if they want life insurance, call the methods from the life class
+      else if (insurance == 2){
+        //check whether there are any available life objects, print a message if not
+        if (tally >= 10){
+          System.out.println("\nWe don’t have any more space for that type of insurance right now!");
+        }
+        else{
+          //instantiate the insurance object using the life constructor
+          i[tally] = new Life();
+          System.out.println("\nLife Insurance: ");
+          //print the info for life insurance
+          i[tally].print();
+          //set the cost and policy to access later on
+          i[tally].setCost();
+          i[tally].setPolicy();
+          System.out.println("\nCost: $" + i[tally].getCost() + "/month\nPolicy: " + i[tally].getPolicy());
+          //call the survey method for the user to complete
+          i[tally].survey();
+          //add one to the tally to keep track of the number objects used
+          tally++;
+        }
+      }
+      //if the user chooses to exit, end the program by breaking out of the loop
+      else{
+        break;
+      }
+
+      //get whether the user would like to buy another insurance plan
+      System.out.println("\nWould you like to register another insurance object(Y/N): ");
+      choice = input.next();
+    
+    }while (!choice.equalsIgnoreCase("N"));
+
+  }
+}
+
+
+import java.util.Scanner;
+
+//subclass that inherits and implements
+public class Health extends Insurance implements PrintMe{
+
+  Scanner input = new Scanner (System.in);
+
+  //default constructor
+  public Health(){
+
+  }
+
+  //set the cost and policy in the mutator methods
+  public void setCost(){
+    cost = 180.99;
+  }
+
+  public void setPolicy(){
+    policy = "Protects your health";
+  }
+
+  //accessor methods
+  public double getCost(){
+    return cost;
+  }
+
+  public String getPolicy(){
+    return policy;
+  }
+  
+
+  //override the survey method
+  public void survey(){
+    //ask the user health-related questions to ensure they are eligible
+    System.out.print("\nHave you ever had a surgery (Y/N): ");
+    String surgery = input.next();
+    System.out.print("\nHave you broken any bones in your lifetime (Y/N): ");
+    String bones = input.next();
+
+    //print whether the user can buy health insurance
+    if (surgery.equalsIgnoreCase("N") && bones.equalsIgnoreCase("N")){
+      System.out.println("\nHealth Insurance has been successfully brought.");
+    }
+    else{
+      System.out.println("\nYou are not eligible to buy this type of insurance.");
+    }
+  }
+
+  //print info about health insurance
+  public void print(){
+    System.out.println("This type of insurance is non-refundable, it is a one-time payment and does not cover for any oral surgeries.");
+  }
+
+
+}
+
+
+//parent class
+public abstract class Insurance implements PrintMe{
+
+  //member variables
+  double cost;
+  String policy;
+
+  //include abstract mutator and accessor methods
+  public abstract void setCost();
+  public abstract void setPolicy();
+
+  public abstract double getCost();
+  public abstract String getPolicy();
+
+  //create an abstract method called survey
+  public abstract void survey();
+
+}
+
+
+import java.util.Scanner;
+//subclass pertains to life insurance
+public class Life extends Insurance implements PrintMe{
+
+  Scanner input = new Scanner(System.in);
+  //default constructor
+  public Life(){
+
+  }
+
+  //set the cost and policy of this type of insurance
+  //mutator methods
+  public void setCost(){
+    cost = 739.09;
+  }
+
+  public void setPolicy(){
+    policy = "Protects your life";
+  }
+
+  //accessor methods
+  public double getCost(){
+    return cost;
+  }
+
+  public String getPolicy(){
+    return policy;
+  }
+
+  public void survey(){
+    //ask the user life-related questions to determine if they are eligible
+    System.out.print("\nAre you on any medications (Y/N): ");
+    String medications = input.next();
+    System.out.print("\nHave you ever contracted a virus (Y/N): ");
+    String virus = input.next();
+
+    //print whether the user can buy the insurance based on their answers
+    if (medications.equalsIgnoreCase("N") && virus.equalsIgnoreCase("N")){
+      System.out.println("\nLife Insurance has been successfully brought.");
+    }
+    else{
+      System.out.println("\nYou are not eligible to buy this type of insurance.");
+    }
+  }
+  
+  //method prints the info for life insurance
+  public void print(){
+    System.out.println("This is a lifetime refundable payment. It covers for any accidents or injuries. This does not include self-inflicted injuries.");
+  }
+
+}
+
+
+//create an interface to print info for each type of insurance
+public interface PrintMe{
+  //each subclass will override the method to print the specific information
+  public void print();
+}
