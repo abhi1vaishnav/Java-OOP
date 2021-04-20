@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    //create an array of 5 objects
+    Combo c [] = new Combo [4];
+
+    //use the defualt constructor for the first two objects and get user input to fill the objects
+    for (int i = 0; i < 2; i ++){
+      c[i] = new Combo();
+      //get the food item
+      System.out.println("\nEnter the food item: ");
+      c[i].setFood(input.next());
+      //get the side
+      System.out.println("\nEnter the side dish: ");
+      c[i].setSide(input.next());
+      //get the price
+      System.out.print("\nEnter the price: $");
+      c[i].setPrice(input.nextDouble());
+
+    }
+
+    //use the overloaded constructor
+    c[2] = new Combo("Pasta","Samosas",12.49);
+    c[3] = new Combo("Pizza","Pop",5.99);
+
+    //display categories of the data for all the objects
+    System.out.println("\n\nCOMBO MAIN\t\tSIDE\t\tPRICE");
+    
+    //for loop displays the data
+    for (int i = 0; i < 4; i ++){
+      System.out.println(c[i].getFood() + "\t\t\t" + c[i].getSide() + "\t\t$" + c[i].getPrice());
+    }
+
+  }
+}
+
+
+public class Combo{
+
+  //member variables
+  String food, side;
+  double price;
+
+  //default
+  public Combo(){
+    food = "";
+    side = "";
+    price = 0;
+  }
+
+  //overloaded
+  public Combo(String f, String s, double p){
+    food = f;
+    side = s;
+    price = p;
+  }
+
+  //mutator methods
+  public void setFood(String f){
+    food = f;
+  }
+
+  public void setSide(String s){
+    side = s;
+  }
+
+  public void setPrice(double p){
+    price = p;
+  }
+
+  //accessor methods
+  public String getFood(){
+    return food;
+  }
+
+  public String getSide(){
+    return side;
+  }
+
+  public double getPrice(){
+    return price;
+  }
+
+}
