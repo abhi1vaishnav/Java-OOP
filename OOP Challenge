@@ -1,0 +1,256 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner (System.in);
+
+    int group;
+    String choice;
+    int infant = 0, toddler = 0, child = 0;
+
+    Infant i[] = new Infant[5];
+    Toddler t[] = new Toddler[5];
+    Children c[] = new Children[5];
+
+    for (int x = 0; x < i.length; x ++){
+      i[x] = new Infant();
+      t[x] = new Toddler();
+      c[x] = new Children();
+    }
+
+    do{
+
+      System.out.print("\n-------CHINGACOUSY DAYCARE CLINIC--------\nWhich child would you like to register at the daycare\n1. Infant\n2. Toddler\n3. Child\n\nEnter the number: ");
+      group = input.nextInt();
+
+      if (group == 1){
+        if (infant >= 5){
+          System.out.println("\nSorry! No spots left in that age group!");
+        }
+        else{
+          System.out.print("\nEnter the infant's name: ");
+          i[infant].setName(input.next());
+          System.out.print("\nEnter the parent's name: ");
+          i[infant].setParent(input.next());
+          System.out.print("\nEnter the emergency contact number (no spaces): ");
+          i[infant].setContact(input.nextInt());
+
+          i[infant].calculateRate();
+          infant ++;
+        }
+      }
+      else if (group == 2){
+        if (toddler >= 5){
+          System.out.println("\nSorry! No spots left in that age group!");
+        }
+        else{
+          System.out.print("\nEnter the toddler's name: ");
+          t[toddler].setName(input.next());
+          System.out.print("\nEnter the parent's name: ");
+          t[toddler].setParent(input.next());
+          System.out.print("\nEnter the emergency contact number (no spaces): ");
+          t[toddler].setContact(input.nextInt());
+
+          t[toddler].calculateRate();
+          toddler ++;
+        }
+      }
+      else {
+        if (child >= 5){
+          System.out.println("\nSorry! No spots left in that age group!");
+        }
+        else{
+          System.out.print("\nEnter the child's name: ");
+          c[child].setName(input.next());
+          System.out.print("\nEnter the parent's name: ");
+          c[child].setParent(input.next());
+          System.out.print("\nEnter the emergency contact number (no spaces): ");
+          c[child].setContact(input.nextInt());
+
+          c[child].calculateRate();
+          child ++;
+        }
+      }
+
+      System.out.print("Would you like to enroll another child (Y/N): ");
+      choice = input.next();
+
+    } while (!choice.equalsIgnoreCase("N"));
+
+
+    System.out.println("-----Infants------");
+    System.out.println("Parent Name\tChild's Name\tContact #\tRate");
+    
+    for (int x = 0; x < infant; x ++){
+      System.out.println(i[x].getParent() + "\t" + i[x].getChild() + "\t" + i[x].getContact() + "\t" + i[x].getRate());
+    }
+
+    System.out.println("-----------------------------");
+    System.out.println("Total Number of Infants: " + infant);
+
+    System.out.println("-----Toddler------");
+    System.out.println("Parent Name\tChild's Name\tContact #\tRate");
+
+    for (int y = 0; y < toddler ; y ++){
+      System.out.println(t[y].getParent() + "\t" + t[y].getChild() + "\t" + t[y].getContact() + "\t" + t[y].getRate());
+    }
+
+    System.out.println("-----------------------------");
+    System.out.println("Total Number of Toddlers: " + toddler);
+
+    System.out.println("-----Children------");
+    System.out.println("Parent Name\tChild's Name\tContact #\tRate");
+
+    for (int z = 0; z < child; z ++){
+      System.out.println(c[z].getParent() + "\t" + c[z].getChild() + "\t" + c[z].getContact() + "\t" + c[z].getRate());
+    }
+
+    System.out.println("-----------------------------");
+    System.out.println("Total Number of Children: " + child);
+    System.out.println("TOTAL ENROLMENT: " + (child + toddler + infant));
+
+  }
+}
+
+
+public abstract class Child {
+
+  String childName, parentName;
+  int contactNumber;
+  double rate;
+
+  public Child(){
+
+  } 
+
+  public void setName(String c){
+    childName = c;
+  }
+
+  public void setParent(String p){
+    parentName = p;
+  }
+
+  public void setContact(int c){
+    contactNumber = c;
+  }
+
+  public void setRate(double r){
+    rate = r;
+  }
+
+  public String getChild(){
+    return childName;
+  }
+
+  public String getParent(){
+    return parentName;
+  }
+
+  public int getContact(){
+    return contactNumber;
+  }
+
+  public double getRate(){
+    return rate;
+  }
+
+  public abstract void calculateRate();
+
+}
+
+
+import java.util.Scanner;
+public class Children extends Child{
+  Scanner input = new Scanner (System.in);
+  String lunch, schooling;
+
+  public Children(){
+
+  }
+
+  public void calculateRate(){
+    System.out.print("\nDoes the child want the lunch provided (Y/N): ");
+    lunch = input.next();
+    System.out.print("\nIs the child doing schooling (Y/N): ");
+    schooling = input.next();
+
+    if (lunch.equalsIgnoreCase("Y") && schooling.equalsIgnoreCase("Y")){
+      super.setRate(20);
+
+    }
+    else if (lunch.equalsIgnoreCase("Y")){
+      super.setRate(15);
+    }
+    else if (schooling.equalsIgnoreCase("Y")){
+      super.setRate(16);
+    }
+    else {
+      super.setRate(13);
+    }
+  }
+
+
+}
+
+
+import java.util.Scanner;
+public class Infant extends Child{
+  Scanner input = new Scanner (System.in);
+  int nap, snacks, age;
+
+  public Infant(){
+
+  }
+
+  public void calculateRate(){
+    System.out.print("\nEnter the nap time (min): ");
+    nap = input.nextInt();
+    System.out.print("\nEnter the number of snacks: ");
+    snacks = input.nextInt();
+    System.out.print("\nEnter the infant's age in months: ");
+    age = input.nextInt();
+
+    if (age < 6){
+      super.setRate(17.25);
+    }
+    else if (nap > 2 && snacks <= 2){
+      super.setRate(15);
+    }
+    else{
+      super.setRate(16.50);
+    }
+  }
+
+}
+
+
+import java.util.Scanner;
+public class Toddler extends Child{
+  Scanner input = new Scanner (System.in);
+  int age;
+  String trained;
+
+  public Toddler(){
+
+  }
+
+  public void calculateRate(){
+    System.out.print("\nEnter the age in years: ");
+    age = input.nextInt();
+    System.out.print("\nEnter whether the toddler is potty trained (Y/N): ");
+    trained = input.next();
+
+    if (age < 2){
+      super.setRate(15);
+    }
+    else if (trained.equalsIgnoreCase("Y")){
+      super.setRate(14);
+    }
+    else {
+      super.setRate(14.5);
+    }
+  }
+
+}
