@@ -1,0 +1,58 @@
+//create an abstract car parent class for the blueprint
+
+//class gets the warranty, colour, model trim and an abstract method for price for each car
+
+public abstract class Car{
+
+  //member variables
+  int warranty;
+  String colour, model, trim;
+
+  //static variable for the location
+  static String location = "Beverly Hills";
+
+  //default constructor
+  public Car(){
+
+  }
+
+  //create an abstract method for setting the price
+  public abstract void setPrice(double p);
+
+  //mutator methods
+  public void setWarranty(int w){
+    warranty = w;
+  }
+
+  public void setColour(String c){
+    colour = c;
+  }
+
+  public void setModel(String m){
+    model = m;
+  }
+
+  public void setTrim(String t){
+    trim = t;
+  }
+
+  //accessor methods
+  public int getWarranty(){
+    return warranty;
+  }
+
+  public String getColour(){
+    return colour;
+  }
+
+  public String getModel(){
+    return model;
+  }
+
+  public String getTrim(){
+    return trim;
+  }
+
+  public abstract double getPrice();
+
+}
