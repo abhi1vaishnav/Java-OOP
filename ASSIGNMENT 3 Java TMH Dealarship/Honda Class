@@ -1,0 +1,39 @@
+//subclass implements and extends from Details and Car respectively
+//contains constructors, discounts the car price and prints info about Honda
+
+public class Honda extends Car implements Details{
+
+  //price member variable
+  double price;
+
+  //default constructor
+  public Honda(){
+
+  }
+
+  //overloaded constructor
+  public Honda(int w, double p, String c, String m, String t){
+    warranty = w;
+    price = p;
+    colour = c;
+    model = m;
+    trim = t;
+  }
+
+  //price mutator method
+  public void setPrice(double p){
+    price = p;
+    //discount 9% for the winter sale
+    price = price*(1-0.09);
+  }
+
+  //price accessor method
+  public double getPrice(){
+    return price;
+  }
+
+  public void print(){
+    System.out.println("\nAt honda, you can now save even more with our HUGE offers! Buy or lease a Honda now and get 9% off the MSRP!");
+  }
+
+}
