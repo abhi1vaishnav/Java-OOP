@@ -1,0 +1,43 @@
+
+//subclass implements and extends from Details and Car respectively
+
+//it contains constructors, adds a fee to the car price and prints info about Mitsubishi's delivery fee
+
+public class Mitsubishi extends Car implements Details{
+
+  //price variable
+  double price;
+
+  //default constructor
+  public Mitsubishi(){
+
+  }
+
+  //overloaded constructor
+  public Mitsubishi(int w, double p, String c, String m, String t){
+    warranty = w;
+    price = p;
+    colour = c;
+    model = m;
+    trim = t;
+  }
+
+  //price mutator method
+  public void setPrice(double p){
+    price = p;
+    //add a 3% delivery fee to the price
+    price = price*1.03;
+  }
+
+  //price accessor method
+  public double getPrice(){
+    return price;
+  }
+
+  //override the print method in the interface
+  public void print(){
+    System.out.println("\nMitsubishi is a worldwide company now delivering cars to your door! Only pay a 3% delivery fee and get your car delivered today!");
+  }
+
+
+}
