@@ -1,0 +1,39 @@
+//subclass implements and extends from Details and Car respectively
+//it contains constructors, discounts the car price and prints info about Toyota's red tag days
+public class Toyota extends Car implements Details{
+
+  //member variables
+  double price;
+
+  //default constructor
+  public Toyota(){
+
+  }
+
+  //overloaded constructor
+  public Toyota(int w, double p, String c, String m, String t){
+    warranty = w;
+    price = p;
+    colour = c;
+    model = m;
+    trim = t;
+  }
+
+  //override the print method in the interface with info about Toyota
+  public void print(){
+    System.out.println("\nToyota red tag days are on now! Buy or lease a Toyota and get 11% off the final price!");
+  }
+
+  //price mutator method
+  public void setPrice(double p){
+    price = p;
+    //reduce the set price by 11% for the toyota red tag days
+    price = price*(1-0.11);
+  }
+
+  //price accessor method
+  public double getPrice(){
+    return price;
+  }
+
+}
