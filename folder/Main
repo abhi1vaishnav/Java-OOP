@@ -134,7 +134,7 @@ class Main {
         }
         //catching String exceptions
         catch (InputMismatchException e){
-          System.out.println("\nBad data type!");
+          System.out.println("\nBad data type! ");
           System.out.println("\nPlease try again!");
           String flush = input.next();
         }
