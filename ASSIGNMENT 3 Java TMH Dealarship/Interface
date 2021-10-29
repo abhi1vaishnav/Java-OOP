@@ -1,0 +1,7 @@
+//interface contains a method for each company to specify their fees
+public interface Details{
+
+  //abstract method will print info about each company's promotion or service fee
+  public void print();
+
+}
